@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site de Frases</title>
+    <link rel="stylesheet" href="./phrases.css" />
+    <link rel="stylesheet" href="../phrases/style.global.css" />
+    <link rel="stylesheet" href="mediaPhrases.css" />
+    <link rel="stylesheet" href="../header/navbar.css">
+    <link rel="stylesheet" href="../alert.success/alert.sucess.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="./script.js" defer></script>
+   
+  </head>
+  <body>
+
+    <header>
+      <div class="hamburger-menu">
+        <input  id="menu__toggle" type="checkbox" />
+        <label  class="menu__btn" id="menu-btn" for="menu__toggle">
+          <span></span>
+        </label>
+        
+        <h1 class="title-header">Study Phrases</h1>
+        <ul class="menu__box">
+          <li><a class="menu__item"href="./index.html">Criar Frases</a></li>
+          <li><a class="menu__item" id="create_phrase" href="../listPhrases/index.html">Frases</a>
+            <i class="fa fa-caret-left" id="next-left-phrase" aria-hidden="true"></i>
+          </li>
+          <li><a class="menu__item" href="/spacePractice/index.html">Estudar</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <form class="form" id="form">
+      <h1 class="title titleRegister">Cadastrar frase</h1>
+
+      <textarea
+        id="phrase"
+        class="textarea"
+        type="text"
+        placeholder="Frase"
+        autofocus
+      ></textarea>
+      
+      <br>
+      <div class="container-radio">
+        <div>
+            <span>Prioridade</span>
+        </div><br> 
+         <input type="radio" value="greed" name="name">
+         <label class="label">Baixa</label>
+         <input type="radio" value="yellow" name="name">
+         <label class="label">Média</label>
+         <input type="radio" value="red" name="name">
+         <label class="label">Alta</label>
+     </div>
+      <button disabled id="buttonRegister" class="registerButton btn" onclick="newPhrase()">Criar</button>
+
+    </form>
+
+    <footer class="alert-success-phrase"></footer>
+    
+  </body>
+</html>
