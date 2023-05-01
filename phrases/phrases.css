@@ -1,0 +1,155 @@
+*{
+  font-family: sans-serif;
+}
+* {
+  margin: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.accountPhrases{
+  color: #fff;
+  font-size: 18px;
+  background-color: red;
+  padding: 6px 11px;
+  border-radius: 50%;
+  margin-left: 8.5rem;
+  margin-top: 5rem;
+  border: none;
+}
+
+#next-left-phrase{
+  position: absolute;
+  margin-top: -47px;
+  font-size: 25px;
+  margin-left: 150px;
+  color: #fff;
+}
+
+.font-green{
+  color: greenyellow !important;
+}
+
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titleRegister {
+  width: 700px;
+  display: flex;
+  font-size: 20px;
+}
+
+.label {
+  margin: 0 700px 10px 0;
+  font-size: x-large;
+}
+
+.textarea {
+  height: 150px;
+  width: 670px;
+  border: solid 2px black;
+  resize: none;
+  background-color: #fff;
+  padding: 15px;
+  font-size: 20px;
+}
+
+a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;  
+  color: #fff;
+}
+.container-radio{
+  width: 700px;
+}
+
+span{
+  font-weight: 600;
+}
+
+.label{
+   font-size: 20px;
+   margin:6px;
+   color: #fff;
+}
+
+input[type="radio"]{
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+input[type="radio"]:checked{
+ background: #6E60BD
+}
+
+.registerButton {
+  cursor: not-allowed;
+  margin-top: 30px;
+}
+#buttonRegister{
+  width: 704px;
+  background-color: #6E60BD;
+  color: #ffffff;
+}
+
+.practicePhrases {
+  margin-top: 30px;
+}
+
+
+span{
+  color: #fff;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 820px)  {
+   .titleRegister , #buttonRegister ,.container-radio{
+    width: 650px;
+  }
+  .textarea{
+    width: 620px;
+  }
+}
+
+@media screen and (max-width: 700px)  {
+  .titleRegister  , #buttonRegister , .container-radio{
+    width: 550px;
+  }
+  .textarea{
+    width: 520px;
+  }
+}
+@media screen and (max-width: 600px)  {
+  .titleRegister  , #buttonRegister , .container-radio{
+    width: 470px;
+  }
+  .textarea{
+    width: 440px;
+  }
+}
+@media screen and (max-width: 500px)  {
+
+   .titleRegister  , #buttonRegister , .container-radio{
+    width: 410px;
+  }
+  .textarea{
+    width: 380px;
+  }
+}
