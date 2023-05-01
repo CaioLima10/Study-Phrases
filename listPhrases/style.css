@@ -1,0 +1,277 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+#registerMorePhrases{
+ width: 100px;
+}
+#svg-filter{
+  cursor: pointer;
+}
+
+.font-lilac{
+  color: #AA9CFF !important;
+}
+
+.title{
+  width: 680px;
+}
+span{
+  width: 680px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+
+
+.input-search-phrases {
+  width: 680px;
+  font-size: 22px;
+  padding-left: 15px;
+  height: 50px;
+
+}
+#applyAndFilter{
+  width: 700px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 3rem;
+  background-color: #6E60BD;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+ul li{
+  list-style: none;
+  display: flex;
+}
+.border-color-phrases{
+   display: flex;
+   position: absolute;
+   width: 3px;
+   height: 30px;
+   background-color: greenyellow;
+}
+
+.container-list-phrases{
+  display: inline;
+  color: #fff;
+  font-size: 20px;
+  margin-right:20px ;
+  width: 740px;
+
+}
+.phrases{ 
+  display: flex;
+  justify-content: space-between;
+  word-break: break-word;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+#registerMorePhrases{
+  width: 490px;
+  margin-right: 20px;
+}
+
+#registerMorePhrases{
+  margin-top: 4rem;
+  margin-left: 20px;
+  width: 705px;
+  margin-right: -1px;
+  text-align: center;
+  background-color: #6E60BD;
+}
+#aLink{
+  color: #fff;
+  font-weight: 600;
+}
+label {
+  display: inline;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 5px;
+ 
+}
+div input[type="radio"] {
+  appearance: none;
+  padding: 8px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+div input[type="radio"]:checked {
+  background-image: radial-gradient(#7545c4 50%, #ffffff 60%);
+}
+
+
+
+
+
+@media screen and (max-width: 860px)  {
+  
+  .titleRegister{
+    width: 600px;
+  }
+  .container-account-phrase{
+    width: 600px;
+  }
+  
+  span{
+    width: 580px;
+    color: #fff;
+    font-size: 18px;
+  }
+  .container-search-filter{
+    width: 580px;
+  }
+  .input-search-phrases {
+    width: 580px;
+  }
+  #applyAndFilter{
+    width: 590px;
+  }
+  
+  .container-list-phrases{
+    display: flex;
+    width: 580px;
+  }
+  .phrases{
+    display: flex;
+    justify-content: space-between;
+    width: 580px;
+  }
+  #registerMorePhrases{
+    width: 600px;
+    margin-left: -1px;
+  }
+  
+}
+@media screen and (max-width: 720px)  {
+
+  .titleRegister{
+    width: 480px;
+  }
+  .container-account-phrase{
+    width: 480px;
+  }
+
+  span{
+    width: 480px;
+    color: #fff;
+    font-size: 18px;
+  }
+  .container-search-filter{
+    width: 480px;
+  }
+  .input-search-phrases {
+    width: 460px;
+  }
+  #applyAndFilter{
+    width: 480px;
+  }
+
+  .container-list-phrases{
+    display: flex;
+    width: 480px;
+  }
+  .phrases{
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+  }
+  #registerMorePhrases{
+    width: 480px;
+    margin-left: -1px;
+
+  }
+
+}
+@media screen and (max-width: 540px)  {
+
+  .titleRegister{
+    width: 400px;
+  }
+
+  span{
+    width: 380px;
+    color: #fff;
+    font-size: 18px;
+  }
+  .container-search-filter{
+    width: 380px;
+  }
+  .input-search-phrases {
+    width: 360px;
+  }
+  #applyAndFilter{
+    width: 380px;
+  }
+
+  .container-list-phrases{
+    display: flex;
+    width: 380px;
+  }
+  .phrases{
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+  }
+  #registerMorePhrases{
+    width: 390px;
+    margin-left: 45px;
+
+  }
+
+}
+@media screen and (max-width: 445px)  {
+
+  .titleRegister{
+    width: 390px;
+  }
+  .container-account-phrase{
+    width: 390px;
+  }
+
+  span{
+    width: 390px;
+    color: #fff;
+    font-size: 18px;
+  }
+  .container-search-filter{
+    width: 390px;
+  }
+  .input-search-phrases {
+    width: 365px;
+  }
+  #applyAndFilter{
+    width: 385px;
+  }
+
+  .container-list-phrases{
+    display: flex;
+    width: 390px;
+  
+  }
+  #registerMorePhrases{
+    width: 390px;
+    margin-left: -1px;
+   
+  }
+  .phrases{
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+  }
+
+}
