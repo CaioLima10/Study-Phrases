@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frases cadastradas </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../phrases/style.global.css">
+    <link rel="stylesheet" href="./navbar.list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+    <script src="../script.js" defer></script>
+  </head>
+  <body>
+
+    <header>
+      
+      <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+        
+        <h1>Study Phrases</h1>
+        <ul class="menu__box">
+          <li><a class="menu__item" href="../phrases/index.html">Criar Frases</a></li>
+          <li><a class="menu__item" href="/spacePractice/index.html">Estudar</a></li>
+        </ul>
+      </div>
+
+    </header>
+
+  <h1 class="title titleRegister">Frases Cadastradas</h1><br><br>
+  <span>Filtros
+       <i id="svg-filter" onclick="openFilter()" class="fa-solid fa-filter"></i><br><br>
+  </span>
+  <div class="container-search-filter">
+    
+      <input class="input-search-phrases" id="pesquisar" placeholder="Pesquisar" type="text">
+  
+        <div class="container-radio">
+          <div>
+              <span id="owner">Prioridade</span>
+          </div><br> 
+          <input type="radio" value="greed" name="name">
+          <label class="label">Baixa</label>
+          <input type="radio" value="yellow" name="name">
+          <label class="label">Média</label>
+          <input type="radio" value="red" name="name">
+          <label class="label">Alta</label>
+       </div>
+
+      <button id="applyAndFilter" onclick="closeModalApply()">Aplicar</button>
+  </div>
+
+  <div class="container-list-phrases">
+    <div id="phrasesStayHere"></div>
+  </div>
+
+
+    <!-- <div class="select-menu">
+      <div class="select">
+        <span id="account-pag">5/Página</span>
+        <svg id="svg-select-low" width="40" height="20" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.3857 0.264526H8.61142H1.61082C0.412861 0.264526 -0.186119 2.08592 0.662435 3.15364L7.12646 11.2871C8.16219 12.5903 9.84682 12.5903 10.8826 11.2871L13.3409 8.19387L17.3465 3.15364C18.1826 2.08592 17.5836 0.264526 16.3857 0.264526Z" fill="white"/>
+        </svg>
+      </div>
+      <i id="arrow-left" class="fa fa-caret-left" aria-hidden="true"></i>
+        <i id="arrow-right" class="fa fa-caret-right" aria-hidden="true"></i>
+      <div class="options-list">
+        <div class="option">5/Página</div>
+        <div class="option">10/Página</div>
+        <div class="option">15/Página</div>
+      </div>
+    </div> -->
+ 
+    <button id="registerMorePhrases" class="toPractice btn">
+      <a id="aLink" class="aLink" href="/spacePractice/index.html">Praticar no site</a>
+  </button>
+
+  </div>
+  
+  </body>
+</html>
