@@ -1,33 +1,28 @@
 const openModal = document.querySelector("#openModal")
 const containerEditRemove = document.querySelector(".container-edit-remove")
 const containerSearchFilter = document.querySelector(".container-search-filter")
-const svgFilter = document.querySelector("#svg-filter")
+const filter = document.querySelector("#open-filter")
 const select = document.querySelector(".select");
 const optionsList = document.querySelector(".options-list");
-const containerContentModal = document.querySelector(".container-content-modal")
-const options = document.querySelectorAll(".option");
-const modalEdit = document.querySelector(".modal-edit");
-const containerRadio = document.querySelector(".container-radio");
 
 
 function listPhrases(index){
-
-
-  const phrasesList = document.getElementById("phrasesStayHere");
-  phrasesList.innerHTML = "";
   
+  const phrasesList = document.getElementById("phrasesStayHere");
+  
+  phrasesList.innerHTML = "";
+
   const minhasFrases = localStorage.getItem("phraseBank")
   if (minhasFrases) {
     const frases = JSON.parse(minhasFrases);
-    
 
-  
+    
     for (const frase of frases) {
-      const item = document.createElement("div");
+      const item = document.createElement("li");
       item.classList.add("paragraph");
       item.innerHTML += ` 
     <ul class="container-flex-phrase">
-    <div class="border-color-phrases"></div>
+    <div class="border-color-phrases" ></div>
     <li class="phrases">${frase}
             <div class="settings">
               <i  onclick="showMenu(this)" id="showModal" class="fa-solid fa-ellipsis-vertical"></i>
@@ -38,10 +33,9 @@ function listPhrases(index){
               </ul>
            </div>
       </li> 
-     </ul>
-   `;  
-
-       phrasesList.append(item);
+      </ul>
+      `;  
+      phrasesList.append(item);
       }
     }
   }
@@ -55,15 +49,32 @@ function listPhrases(index){
            taskMenu.classList.remove("show")
         }
     })
-    }
-  }
 }
 
-function removePhrase(data){
+document.querySelector("#filter-input").
+addEventListener("input", filterListPhrases)
+
+function filterListPhrases(){
+    const seachInput = document.querySelector("#filter-input")
+    const filter = seachInput.value.toLowerCase()
+    const listPhrases = document.querySelectorAll("li")
+
+    listPhrases.forEach((item) => {
+      const text = item.textContent
+      if(text.toLowerCase().includes(filter.toLowerCase())){
+        item.style.display = ''
+      }else{
+        item.style.display = 'none'
+      }
+    })
+}
+
+function deleteTask(data){
   const  valuePhrase = JSON.parse(localStorage.getItem("phraseBank") || [])
 
   const index = valuePhrase.findIndex(item => item.frase == data)
   valuePhrase.splice(index , 1)
+
   localStorage.setItem("phraseBank",JSON.stringify(valuePhrase))
 
   console.log(valuePhrase)
@@ -71,21 +82,18 @@ function removePhrase(data){
   listPhrases()
 }
 
-  function openModalContent(){
-        containerContentModal.style.display = "block"
-      }
 
      function openFilter(){
-       svgFilter.classList.add("font-lilac")
+       filter.classList.add("font-lilac")
        containerSearchFilter.style.display = "block"  
      }
 
      function closeModalApply(){
-       svgFilter.classList.remove("font-lilac")
+       filter.classList.remove("font-lilac")
        containerSearchFilter.style.display = "none"  
      }
     function openPropertyPhrases(){
-      svgFilter.classList.add("font-lilac")
+      filter.classList.add("font-lilac")
       containerSearchFilter.style.display = "block" 
     }
 
