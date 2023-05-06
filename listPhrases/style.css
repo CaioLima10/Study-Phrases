@@ -36,6 +36,32 @@ span{
   height: 50px;
 
 }
+.input-wrapper {
+ position: relative;
+}
+
+#filter-input {
+  width: 650px;
+  padding: 1rem 1.6rem;
+  border-radius: 2px;
+  background-color: #fff;
+  border: 0;
+  color:#12074d;
+
+  font-size: 1.6rem;
+}
+.input-wrapper i {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+}
+#icons-filter {
+  font-size: 1.4rem;
+  color: #49407D;
+  border-radius: 50%;
+  padding: .1rem;
+}
+
 #applyAndFilter{
   width: 700px;
   height: 50px;
@@ -138,6 +164,17 @@ div input[type="radio"]:checked {
   .input-search-phrases {
     width: 580px;
   }
+  
+  #filter-input {
+    font-size: 18px;
+    height: 25px;
+    width: 540px;
+  }
+  #icons-filter{
+    right: -1px;
+    bottom: 1.0rem;
+    font-size: 20px;
+  }
   #applyAndFilter{
     width: 590px;
   }
@@ -175,7 +212,17 @@ div input[type="radio"]:checked {
     width: 480px;
   }
   .input-search-phrases {
-    width: 460px;
+    width: 520px;
+  }
+
+  #filter-input {
+    font-size: 18px;
+    height: 25px;
+    width: 480px;
+  }
+  #icons-filter{
+    bottom: 1.0rem;
+    font-size: 20px;
   }
   #applyAndFilter{
     width: 480px;
@@ -212,7 +259,16 @@ div input[type="radio"]:checked {
     width: 380px;
   }
   .input-search-phrases {
-    width: 360px;
+    width: 390px;
+  }
+  #filter-input {
+    font-size: 18px;
+    height: 25px;
+    width: 350px;
+  }
+  #icons-filter{
+    bottom: 1.0rem;
+    font-size: 20px;
   }
   #applyAndFilter{
     width: 380px;

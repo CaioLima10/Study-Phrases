@@ -29,15 +29,32 @@ function listPhrases(index){
     <ul class="container-flex-phrase">
     <div class="border-color-phrases"></div>
     <li class="phrases">${frase}
-          <div class="container-modal-open">
-              <button><i id="openModal" onclick="openModalContent()" class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
-          </div>
+            <div class="settings">
+              <i  onclick="showMenu(this)" id="showModal" class="fa-solid fa-ellipsis-vertical"></i>
+              <ul class="task-menu">
+                  <li id="deletePhrase" onclick="deleteTask()"><i class="fa-solid fa-circle-minus"></i>Excluir frase</li><br><br>
+                  <li id="changeOwner" onclick="changeOwner()"><i class="fa-solid fa-pen-to-square"></i>Mudar proprietario</li><br><br>
+                  <li id="deletePhrase" onclick="editTask()"><i class="fa-solid fa-chart-column"></i>Editar</li><br>
+              </ul>
+           </div>
       </li> 
      </ul>
    `;  
 
        phrasesList.append(item);
+      }
+    }
+  }
 
+  function showMenu(selectedTask){
+  
+    let taskMenu = selectedTask.parentElement.lastElementChild;
+    taskMenu.classList.add("show")
+    document.addEventListener("click", e => {
+        if(e.target != selectedTask){
+           taskMenu.classList.remove("show")
+        }
+    })
     }
   }
 }
@@ -72,23 +89,9 @@ function removePhrase(data){
       containerSearchFilter.style.display = "block" 
     }
 
-     //show & hide options list
-    //  select.addEventListener("click", () => {
-    //    optionsList.classList.toggle("active");
-    //    select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
-    //  });
- 
-     //select option
-    //  options.forEach((option) => {
-    //    option.addEventListener("click", () => {
-    //      options.forEach((option) => {option.classList.remove('selected')});
-    //      select.querySelector("span").innerHTML = option.innerHTML;
-    //      option.classList.add("selected");
-    //      optionsList.classList.toggle("active");
-    //      select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
-    //    });
-    //  });
-
-
+function changeOwner(){
+  filter.classList.add("font-lilac")
+  containerSearchFilter.style.display = "block" 
+}
 
 listPhrases()
