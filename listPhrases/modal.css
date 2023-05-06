@@ -1,0 +1,42 @@
+.task .settings{
+    position: relative;
+}
+.task-menu{
+    position: absolute;
+    background: #fff;
+    padding: 10px 10px;
+    right: 225px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.144);
+    width: 160px;
+    height: 95px;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: transform 0.2s ease;
+    z-index: 2;
+}
+
+.settings .task-menu.show{
+    transform: scale(1);
+}
+
+#showModal{
+ display: flex;
+ cursor: pointer;
+ font-size: 22px;
+ color: #fff;
+}
+
+#deletePhrase ,
+#editPhrase,
+#changeOwner {
+margin-bottom: 10px;
+display: inline;
+cursor: pointer;
+font-size: 15px;
+color: #12074d;
+}
+#deletePhrase:hover ,
+#editPhrase:hover,
+#changeOwner:hover {
+  border-bottom: 2px solid #000;
+}
