@@ -6,13 +6,6 @@ body {
 }
 
 
-#registerMorePhrases{
- width: 100px;
-}
-#svg-filter{
-  cursor: pointer;
-}
-
 .font-lilac{
   color: #AA9CFF !important;
 }
@@ -26,11 +19,17 @@ span{
   font-weight: 600;
   font-size: 18px;
 }
+ul , li{
+  list-style: none;
+}
 
+.container-search-filter{
+  display: none;
+}
 
-
-.input-search-phrases {
-  width: 680px;
+#search-input {
+  display: inline;
+  width: 640px;
   font-size: 22px;
   padding-left: 15px;
   height: 50px;
@@ -83,7 +82,7 @@ ul li{
    display: flex;
    position: absolute;
    width: 3px;
-   height: 30px;
+   height: 24px;
    background-color: greenyellow;
 }
 
@@ -96,13 +95,17 @@ ul li{
 
 }
 .phrases{ 
+  color: #fff;
   display: flex;
+  width: 675px;
   justify-content: space-between;
   word-break: break-word;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   margin-top: 15px;
   margin-left: 20px;
+  margin-right: 40px;
 }
+
 #registerMorePhrases{
   width: 490px;
   margin-right: 20px;
@@ -142,8 +145,6 @@ div input[type="radio"]:checked {
 
 
 
-
-
 @media screen and (max-width: 860px)  {
   
   .titleRegister{
@@ -160,6 +161,7 @@ div input[type="radio"]:checked {
   }
   .container-search-filter{
     width: 580px;
+
   }
   .input-search-phrases {
     width: 580px;
@@ -186,7 +188,8 @@ div input[type="radio"]:checked {
   .phrases{
     display: flex;
     justify-content: space-between;
-    width: 580px;
+    margin-right: 35px;
+    width: 560px;
   }
   #registerMorePhrases{
     width: 600px;
@@ -197,19 +200,19 @@ div input[type="radio"]:checked {
 @media screen and (max-width: 720px)  {
 
   .titleRegister{
-    width: 480px;
+    width: 520px;
   }
   .container-account-phrase{
-    width: 480px;
+    width: 520px;
   }
 
   span{
-    width: 480px;
+    width: 520px;
     color: #fff;
     font-size: 18px;
   }
   .container-search-filter{
-    width: 480px;
+    width: 520px;
   }
   .input-search-phrases {
     width: 520px;
@@ -225,7 +228,7 @@ div input[type="radio"]:checked {
     font-size: 20px;
   }
   #applyAndFilter{
-    width: 480px;
+    width: 530px;
   }
 
   .container-list-phrases{
@@ -235,28 +238,24 @@ div input[type="radio"]:checked {
   .phrases{
     display: flex;
     justify-content: space-between;
-    width: 480px;
-  }
-  #registerMorePhrases{
-    width: 480px;
-    margin-left: -1px;
-
+    margin-right: 40px;
+    width: 500px;
   }
 
 }
-@media screen and (max-width: 540px)  {
+@media screen and (max-width: 580px)  {
 
   .titleRegister{
     width: 400px;
   }
 
   span{
-    width: 380px;
+    width: 400px;
     color: #fff;
     font-size: 18px;
   }
   .container-search-filter{
-    width: 380px;
+    width: 400px;
   }
   .input-search-phrases {
     width: 390px;
@@ -271,7 +270,7 @@ div input[type="radio"]:checked {
     font-size: 20px;
   }
   #applyAndFilter{
-    width: 380px;
+    width: 405px;
   }
 
   .container-list-phrases{
@@ -281,19 +280,16 @@ div input[type="radio"]:checked {
   .phrases{
     display: flex;
     justify-content: space-between;
-    width: 380px;
+    margin-right: 40px;
+    width: 375px;
   }
-  #registerMorePhrases{
-    width: 390px;
-    margin-left: 45px;
 
-  }
 
 }
-@media screen and (max-width: 445px)  {
+@media screen and (max-width: 455px)  {
 
   .titleRegister{
-    width: 390px;
+    width: 400px;
   }
   .container-account-phrase{
     width: 390px;
@@ -306,17 +302,24 @@ div input[type="radio"]:checked {
   }
   .container-search-filter{
     width: 390px;
+    
   }
-  .input-search-phrases {
-    width: 365px;
+  #filter-input {
+    font-size: 18px;
+    height: 25px;
+    width: 340px;
+  }
+  #icons-filter{
+    bottom: 1.0rem;
+    font-size: 20px;
   }
   #applyAndFilter{
-    width: 385px;
+    width: 390px;
   }
 
   .container-list-phrases{
     display: flex;
-    width: 390px;
+    width: 340px;
   
   }
   #registerMorePhrases{
@@ -327,7 +330,9 @@ div input[type="radio"]:checked {
   .phrases{
     display: flex;
     justify-content: space-between;
-    width: 380px;
+    margin-right: 40px;
+    width: 370px;
   }
+ 
 
 }
