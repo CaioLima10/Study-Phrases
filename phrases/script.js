@@ -2,6 +2,7 @@ const form = document.querySelector("#form");
 const buttonRegister = document.getElementById("buttonRegister");
 const phrasesTextarea = document.querySelector("#phrase");
 
+
 buttonRegister.addEventListener("click", function () {
   disableButton();
 });
@@ -62,7 +63,7 @@ function newPhrase() {
 
 const alertSuccessPhrase = document.querySelector(".alert-success-phrase");
 
-const msg = "frase criada ✔";
+const msg = "frase criada  ✔";
 
 function ativar(msg) {
   const message = document.createElement("div");
