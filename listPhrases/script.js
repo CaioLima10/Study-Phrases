@@ -27,9 +27,9 @@ function listPhrases(index){
             <div class="settings">
               <i  onclick="showMenu(this)" id="showModal" class="fa-solid fa-ellipsis-vertical"></i>
               <ul class="task-menu">
-                  <li id="deletePhrase" onclick="deleteTask()"><i class="fa-solid fa-circle-minus"></i>Excluir frase</li><br><br>
+                  <li id="deletePhrase" onclick="deletePhrases(${index})"><i class="fa-solid fa-circle-minus"></i>Excluir frase</li><br><br>
                   <li id="changeOwner" onclick="changeOwner()"><i class="fa-solid fa-pen-to-square"></i>Mudar proprietario</li><br><br>
-                  <li id="deletePhrase" onclick="editTask()"><i class="fa-solid fa-chart-column"></i>Editar</li><br>
+                  <li id="deletePhrase" onclick="editPhrases(${index})"><i class="fa-solid fa-chart-column"></i>Editar</li><br>
               </ul>
            </div>
       </li> 
@@ -40,24 +40,32 @@ function listPhrases(index){
     }
   }
 
-  function showMenu(selectedTask){
-  
-    let taskMenu = selectedTask.parentElement.lastElementChild;
-    taskMenu.classList.add("show")
+function showMenu(selectedPhrase){
+    const showModal = selectedPhrase.parentElement.lastElementChild;
+
+    showModal.classList.contains("show")
+    ?  showModal.classList.remove("show")
+    :  showModal.classList.add("show")
+
     document.addEventListener("click", e => {
-        if(e.target != selectedTask){
-           taskMenu.classList.remove("show")
-        }
-    })
+    if(e.target != selectedPhrase){
+    showModal.classList.remove("show")
+    }
+  })
+}
+
+function editPhrases(){
+
 }
 
 document.querySelector("#filter-input").
 addEventListener("input", filterListPhrases)
 
 function filterListPhrases(){
+
     const seachInput = document.querySelector("#filter-input")
-    const filter = seachInput.value.toLowerCase()
     const listPhrases = document.querySelectorAll("li")
+    const filter = seachInput.value.toLowerCase()
 
     listPhrases.forEach((item) => {
       const text = item.textContent
@@ -67,9 +75,11 @@ function filterListPhrases(){
         item.style.display = 'none'
       }
     })
+    
 }
 
-function deleteTask(data){
+
+function deletePhrases(data){
   const  valuePhrase = JSON.parse(localStorage.getItem("phraseBank") || [])
 
   const index = valuePhrase.findIndex(item => item.frase == data)
@@ -84,8 +94,10 @@ function deleteTask(data){
 
 
      function openFilter(){
+      
        filter.classList.add("font-lilac")
        containerSearchFilter.style.display = "block"  
+      
      }
 
      function closeModalApply(){
