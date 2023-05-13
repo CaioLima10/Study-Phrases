@@ -60,6 +60,7 @@ form {
   background-color: #fff;
   padding: 15px;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 a{
@@ -97,10 +98,15 @@ input[type="radio"]:checked{
   cursor: not-allowed;
   margin-top: 30px;
 }
-#buttonRegister{
+
+button#buttonRegister{
   width: 704px;
   background-color: #6E60BD;
   color: #ffffff;
+}
+
+button#buttonRegister:disabled {
+  background-color: gray;
 }
 
 .practicePhrases {

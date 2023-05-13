@@ -1,41 +1,41 @@
-const form = document.querySelector("#form");
-const buttonRegister = document.getElementById("buttonRegister");
-const phrasesTextarea = document.querySelector("#phrase");
 
+const form = document.getElementById("form");
+const buttonRegister = document.getElementById("buttonRegister");
+const phrasesTextarea = document.getElementById("phrase");
 
 buttonRegister.addEventListener("click", function () {
   disableButton();
 });
 
 function enableButton() {
-  buttonRegister.disabled = false;
+  // buttonRegister.disabled = false;
   buttonRegister.style.cursor = "pointer";
 }
 
 function disableButton() {
-  buttonRegister.disabled = true;
+  // buttonRegister.disabled = true;
   buttonRegister.style.cursor = "not-allowed";
 }
 
-(function textAreaValidate() {
-  phrasesTextarea.addEventListener("keyup", function (event) {
-    if (phrasesTextarea.value === "") {
-      disableButton();
-    } else {
-      enableButton();
-    }
-  });
-})();
+phrasesTextarea.addEventListener("keyup",  () => {
+  if (phrasesTextarea.value) {
+    enableButton();
+  } else {
+    disableButton();
+  }
+});
 
-phrasesTextarea.addEventListener("input", () => {
+
+phrasesTextarea.addEventListener('input', () => {
   phrasesTextarea.value = phrasesTextarea.value
     ? phrasesTextarea.value.trimStart()
-    : "";
-  });
-  
-  form.addEventListener("submit", (event) => {
+    : '';
+});
+
+form.addEventListener('submit', (event) => {
   event.preventDefault();
-  
+
+  createPhrase({ phrase: phrasesTextarea.value })
 });
 
 let arr = [];
@@ -75,12 +75,3 @@ function ativar(msg) {
     message.style.display = "none";
   }, 2000);
 }
-
-buttonRegister.addEventListener("click", () => {
-  ativar(msg);
-  console.log("ativar")
-});
-
-
-
-

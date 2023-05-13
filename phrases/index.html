@@ -7,11 +7,11 @@
     <title>Site de Frases</title>
     <link rel="stylesheet" href="./phrases.css" />
     <link rel="stylesheet" href="../phrases/style.global.css" />
-    <link rel="stylesheet" href="mediaPhrases.css" />
     <link rel="stylesheet" href="../header/navbar.css">
     <link rel="stylesheet" href="../alert.success/alert.sucess.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="../http/client.js" defer></script>
     <script src="./script.js" defer></script>
    
   </head>
@@ -46,9 +46,8 @@
         autofocus
       ></textarea>
       
-      <br>
-  <div id="container-radio">     
-      <div id="radioInformation" class="cor">
+      <div id="container-radio">     
+        <div id="radioInformation" class="cor">
           <span>Prioridade</span><br><br>
           <input type="radio" name="cor" value=" #88f9d4" />
           <label class="label">Baixa</label>
@@ -56,10 +55,17 @@
           <label class="label">Media</label>
           <input type="radio" name="cor" value ="#9d88f0"/>
           <label class="label">Alta</label>
+        </div>
       </div>
-  </div> 
-      <button disabled id="buttonRegister" class="registerButton btn" onclick="newPhrase()">Criar</button>
 
+      <button 
+        id="buttonRegister"
+        
+        class="registerButton btn"
+        type="submit"
+      >
+        Criar
+      </button>
     </form>
 
     <footer class="alert-success-phrase"></footer>
