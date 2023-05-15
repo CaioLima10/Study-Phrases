@@ -1,11 +1,12 @@
 
   .message {
-    padding: 6px 20px;
+    text-transform: uppercase;
+    padding: 15px 40px;
     position: fixed;
     font-size: 18px;
     bottom: 20px;
     left: 35px;
-    background-color: #6E60BD;
+    background-color: #5540cd;
     border-radius: 3px;
     color: #fff;
     animation: slidein 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;

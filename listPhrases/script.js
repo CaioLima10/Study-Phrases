@@ -6,58 +6,48 @@ const select = document.querySelector(".select");
 const optionsList = document.querySelector(".options-list");
 
 
-function listPhrases(index){
+async function listPhrases(index){
   
   const phrasesList = document.getElementById("phrasesStayHere");
   
   phrasesList.innerHTML = "";
+  
+  const minhasFrases = await listPhrase()
+  if (minhasFrases.length) {
 
-  const minhasFrases = localStorage.getItem("phraseBank")
-  if (minhasFrases) {
-    const frases = JSON.parse(minhasFrases);
-
-    
-    for (const frase of frases) {
-      const item = document.createElement("li");
-      item.classList.add("paragraph");
-      item.innerHTML += ` 
-    <ul class="container-flex-phrase">
-    <div class="border-color-phrases" ></div>
-    <li class="phrases">${frase}
-            <div class="settings">
-              <i  onclick="showMenu(this)" id="showModal" class="fa-solid fa-ellipsis-vertical"></i>
-              <ul class="task-menu">
-                  <li id="deletePhrase" onclick="deleteTask()"><i class="fa-solid fa-circle-minus"></i>Excluir frase</li><br><br>
-                  <li id="changeOwner" onclick="changeOwner()"><i class="fa-solid fa-pen-to-square"></i>Mudar proprietario</li><br><br>
-                  <li id="deletePhrase" onclick="editTask()"><i class="fa-solid fa-chart-column"></i>Editar</li><br>
-              </ul>
-           </div>
-      </li> 
-      </ul>
-      `;  
-      phrasesList.append(item);
+      for (const item of minhasFrases) {
+        const ul = createItem(item)
+        phrasesList.append(ul);
       }
     }
   }
 
-  function showMenu(selectedTask){
-  
-    let taskMenu = selectedTask.parentElement.lastElementChild;
-    taskMenu.classList.add("show")
+function showMenu(selectedPhrase){
+    const showModal = selectedPhrase.parentElement.lastElementChild;
+
+    showModal.classList.contains("show")
+    ?  showModal.classList.remove("show")
+    :  showModal.classList.add("show")
+
     document.addEventListener("click", e => {
-        if(e.target != selectedTask){
-           taskMenu.classList.remove("show")
-        }
-    })
+    if(e.target != selectedPhrase){
+    showModal.classList.remove("show")
+    }
+  })
+}
+
+function editPhrases(){
+
 }
 
 document.querySelector("#filter-input").
 addEventListener("input", filterListPhrases)
 
 function filterListPhrases(){
+
     const seachInput = document.querySelector("#filter-input")
-    const filter = seachInput.value.toLowerCase()
     const listPhrases = document.querySelectorAll("li")
+    const filter = seachInput.value.toLowerCase()
 
     listPhrases.forEach((item) => {
       const text = item.textContent
@@ -69,7 +59,7 @@ function filterListPhrases(){
     })
 }
 
-function deleteTask(data){
+function deletePhrases(data){
   const  valuePhrase = JSON.parse(localStorage.getItem("phraseBank") || [])
 
   const index = valuePhrase.findIndex(item => item.frase == data)
@@ -84,8 +74,10 @@ function deleteTask(data){
 
 
      function openFilter(){
+      
        filter.classList.add("font-lilac")
        containerSearchFilter.style.display = "block"  
+      
      }
 
      function closeModalApply(){
@@ -103,3 +95,29 @@ function changeOwner(){
 }
 
 listPhrases()
+
+
+function createItem(item) {
+  const liItem = document.createElement("li");
+  liItem.classList.add("paragraph");
+  const ul = document.createElement('ul');
+  ul.classList.add('container-flex-phrase')
+  const div = document.createElement('div');
+  div.classList.add('border-color-phrases');
+
+  liItem.innerHTML += ` 
+    <li class="phrases">${item.phrase}
+      <div class="settings">
+        <i  onclick="showMenu(this)" id="showModal" class="fa-solid fa-ellipsis-vertical"></i>
+        <ul class="task-menu">
+            <li id="deletePhrase" onclick="deletePhrases(${item.id})"><i class="fa-solid fa-circle-minus"></i>Excluir frase</li><br><br>
+            <li id="changeOwner" onclick="changeOwner()"><i class="fa-solid fa-pen-to-square"></i>Mudar proprietario</li><br><br>
+            <li id="deletePhrase" onclick="editPhrases(${item.id})"><i class="fa-solid fa-chart-column"></i>Editar</li><br>
+        </ul>
+      </div>
+    </li> 
+  `; 
+  ul.appendChild(div)
+  ul.appendChild(liItem)
+  return ul
+}
