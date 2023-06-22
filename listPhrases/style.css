@@ -5,9 +5,21 @@ body {
   flex-direction: column;
 }
 
+.border-color-phrases {
 
-.font-lilac{
-  color: #AA9CFF !important;
+  position: absolute;
+  display: flex;
+  width: 3px;
+  height: 24px;
+  background-color: greenyellow;
+
+}
+body{
+  font-family: 'inter'; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .title{
@@ -20,6 +32,9 @@ span{
   font-size: 18px;
 }
 ul , li{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   list-style: none;
 }
 
@@ -49,11 +64,13 @@ ul , li{
 
   font-size: 1.6rem;
 }
+
 .input-wrapper i {
   position: absolute;
   right: 1.2rem;
   bottom: 1.2rem;
 }
+
 #icons-filter {
   font-size: 1.4rem;
   color: #49407D;
@@ -77,13 +94,7 @@ ul , li{
 ul li{
   list-style: none;
   display: flex;
-}
-.border-color-phrases{
-   display: flex;
-   position: absolute;
-   width: 3px;
-   height: 24px;
-   background-color: greenyellow;
+  text-align: center;
 }
 
 .container-list-phrases{
@@ -94,13 +105,15 @@ ul li{
   width: 740px;
 
 }
+
+
 .phrases{ 
   color: #fff;
   display: flex;
   width: 675px;
   justify-content: space-between;
   word-break: break-word;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   margin-top: 15px;
   margin-left: 20px;
   margin-right: 40px;
@@ -333,6 +346,61 @@ div input[type="radio"]:checked {
     margin-right: 40px;
     width: 370px;
   }
- 
+
+
+}
+@media screen and (max-width: 355px)  {
+
+  .titleRegister{
+    width: 385px;
+  }
+  .container-account-phrase{
+    width: 350px;
+  }
+
+  span{
+    width: 270px;
+    color: #fff;
+    font-size: 16px;
+  }
+  .container-search-filter{
+    width: 290px;
+    
+    
+  }
+  #filter-input {
+    font-size: 18px;
+    height: 25px;
+    width: 260px;
+  }
+  #icons-filter{
+    width: 40px;
+    bottom: 1.0rem;
+    font-size: 20px;
+  }
+  #applyAndFilter{
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    width: 290px;
+  }
+
+  .container-list-phrases{
+    display: flex;
+    width: 200px;
+  
+  }
+  #registerMorePhrases{
+    width: 240px;
+    margin-left: -1px;
+   
+  }
+  .phrases{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    width: 260px;
+  }
+
 
 }
