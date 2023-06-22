@@ -1,7 +1,8 @@
-
 const form = document.getElementById("form");
 const buttonRegister = document.getElementById("buttonRegister");
 const phrasesTextarea = document.getElementById("phrase");
+const phrasesStayHere = document.querySelector(".phrasesStayHere")
+const borderColorPhrases = document.querySelector(".border-color-phrases")
 
 buttonRegister.addEventListener("click", function () {
   disableButton();
@@ -28,50 +29,45 @@ phrasesTextarea.addEventListener("keyup",  () => {
 
 phrasesTextarea.addEventListener('input', () => {
   phrasesTextarea.value = phrasesTextarea.value
-    ? phrasesTextarea.value.trimStart()
-    : '';
+  ? phrasesTextarea.value.trimStart()
+  : '';
 });
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  createPhrase({ phrase: phrasesTextarea.value })
-});
+  const inputChecked = document.querySelector('input[name="prioridade"]:checked')
+  const textarea = document.getElementById("phrase")
+  try {
+    if (!inputChecked || !textarea.value) {
+      // error
+      alert('por favor digitar todos os campos')
+    }
+    if (inputChecked) {
+      const priority = inputChecked.value;
+      getPriorityColor(priority);
+    }
 
-let arr = [];
+  createPhrase({
+      phrase: textarea.value,
+      priority: document.querySelector('input[name="prioridade"]:checked').value
+    })
 
-function newPhrase() {
+    textarea.value = ''
+    inputChecked.checked = false
 
-  
-  if (localStorage.phraseBank) {
-    arr = JSON.parse(localStorage.getItem("phraseBank"));
-  }
-  let phrase = document.getElementById("phrase").value.toLowerCase();
-  
-  const itemAlreadyExists = arr.find((item) => item == phrase);
-  
-  
-  if (itemAlreadyExists) {
-  } else {
-    arr.push(phrase);
-  }
+    } catch (error) {
+      console.log('error', error)
+    }
 
-  document.getElementById("phrase").value = "";
-  localStorage.phraseBank = JSON.stringify(arr);
-  
-}
-
-const alertSuccessPhrase = document.querySelector(".alert-success-phrase");
-
-const msg = "frase criada  ✔";
-
-function ativar(msg) {
-  const message = document.createElement("div");
-  message.classList.add("message");
-  message.innerText = msg;
-  alertSuccessPhrase.appendChild(message);
-
-  setTimeout(() => {
-    message.style.display = "none";
-  }, 2000);
-}
+  function getPriorityColor(priority) {
+    if(priority === "low"){
+      console.log(priority)
+    }
+    if(priority === "medium"){
+      console.log(priority)
+    }
+    if(priority === "high"){
+      console.log(priority)
+    }}
+  });
