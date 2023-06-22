@@ -1,12 +1,3 @@
-/**
- * 
- * @param { { 
- *  method: 'POST' | 'GET' | 'PUT' | 'DELETE',
- *  path: 'string' ,
- *  body: Object | null | undefined
- *  } } param0 
- * @returns 
- */
 const client = ({
    body = null, path = '', method = 'GET'
 }) => {
@@ -21,38 +12,35 @@ const client = ({
       },
       body: body ? JSON.stringify(body): null
     })
-    .then(response =>  response.json())
-    .then(data => resolve(data))
-    .catch(error => {
-      reject(error)
-    });
+    .then(response => {
+      if (response.status !== 204) {
+        const data = response.json();
+        resolve(data);
+      } else {
+        resolve(); 
+      }
+    })
+    .catch((error) => reject(error));
   })
 }
 
-async function createPhrase({ phrase }) {
-  await client({ method: 'POST', path: 'phrase', body: { phrase }})
+async function createPhrase({ phrase , priority }) {
+  await client({ method: 'POST', path: 'phrase', body: { phrase , priority }})
 }
 
 async function listPhrase() {
   return await client({ method: 'GET', path: 'phrase' })
 }
 
-/**
- * 
- * @param {{id: string}} param0 
- * @returns 
- */
+
 async function updatePhrase({ id }) {
   const path = `phrase/${id}`
   await client({ method: 'PUT', path })
+  listPhrases(); 
 }
 
-/**
- * 
- * @param {{id: string}} param0 
- * @returns 
- */
-async function deletePhrase({ id }) {
-  const path = `phrase/${id}`
-  await client({ method: 'DELETE', path })
+async function deletePhrase( { id } ) {
+  const path = `phrase/${ id }`
+  await client({ method: 'DELETE' , path })
+  listPhrases(); 
 }
