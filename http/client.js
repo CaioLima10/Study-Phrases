@@ -42,5 +42,4 @@ async function updatePhrase({ id }) {
 async function deletePhrase( { id } ) {
   const path = `phrase/${ id }`
   await client({ method: 'DELETE' , path })
-  listPhrases(); 
 }
