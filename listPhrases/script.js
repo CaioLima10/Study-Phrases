@@ -5,6 +5,16 @@ const filter = document.querySelector("#open-filter");
 const select = document.querySelector(".select");
 const optionsList = document.querySelector(".options-list");
 
+// opção deleção documentação
+const modal = document.querySelector(".container-modal")
+const btnOkDelete = document.querySelector(".btnOk")
+const btnClose = document.querySelector(".btnClose")
+
+//opção edição documentação
+
+const modalEdit = document.querySelector(".modal-edit")
+const editBtnConfirm = document.querySelector(".edit-btn-confirm")
+
 
 async function listPhrases() {
   const phrasesList = document.getElementById("phrasesStayHere");
@@ -79,28 +89,62 @@ function changeOwner(){
   containerSearchFilter.style.display = "block" 
 }
 
-listPhrases()
+
+
+async function editPhrase({ id }) {
+  modalEdit.classList.add("active")
+
+  const path = `phrase/${id}`
+  const response = await client ({ method: 'PUT' , path })
+
+  if(response && (response  === 204)){
+    return console.log('Frase atualizada com sucesso!');
+  }else{
+    console.error(error)
+  }
+
+  listPhrases()
+}
 
 async function deletePhrase({ id }) {
-  // Exibir modal de confirmação
-  const confirmed = confirm("Tem certeza de que deseja excluir esta frase?");
+    modal.classList.add("active")
 
-  if (!confirmed) {
-    return undefined
+      return new Promise((resolve) => {
+        btnOkDelete.addEventListener("click" , confirmDelete)
+        btnClose.addEventListener("click" , cancelDelete)
+
+      function cancelDelete(){
+        modal.classList.remove("active")
+        btnOkDelete.addEventListener("click" , confirmDelete)
+        btnClose.addEventListener("click" , cancelDelete)
+
+        resolve(false)
+      }
+      
+      function confirmDelete(){
+        modal.classList.remove("active")
+        btnClose.removeEventListener("click" , cancelDelete)
+        btnOkDelete.removeEventListener("click" , confirmDelete)
+        resolve(true)
+
+      }
+    }).then((confirmDelete) => {
+      if (confirmDelete) {
+        try {
+          const response = client({ method: 'DELETE', path: `phrase/${id}` });
+          if (response && (response.status === 200 || response.status === 404)) {
+            console.log('Frase excluída com sucesso!');
+          }
+        } catch (error) {
+          console.error(error);
+        }    
+        listPhrases()
+      }
+    });
   }
-  
-  try {
-    const response = await client({ method: 'DELETE', path: `phrase/${ id }` });
-    if (response && response.status === 204) {
-      console.log('Frase excluída com sucesso!');
-      listPhrases();
-    } else {
-      console.error(response);
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
+
+
+  listPhrases(); 
 
 
 function createItem(item) {
@@ -125,8 +169,8 @@ function createItem(item) {
   const taskMenuUl = document.createElement("ul");
   taskMenuUl.classList.add("task-menu");
 
-  const deletePhraseLi = document.createElement("li");
-  deletePhraseLi.addEventListener("click", () => deletePhrase({ id: item.id}));
+  const  deletePhraseLi = document.createElement("li");
+  deletePhraseLi.addEventListener("click", () =>  deletePhrase({ id: item.id}));
   deletePhraseLi.innerHTML = `
     <i class="fa-solid fa-circle-minus"></i>Excluir frase
   `;
@@ -138,7 +182,7 @@ function createItem(item) {
   `;
 
   const editPhraseLi = document.createElement("li");
-  editPhraseLi.addEventListener("click", () => editPhrases(item.id));
+  editPhraseLi.addEventListener("click", () => editPhrase({id: item.id}));
   editPhraseLi.innerHTML = `
     <i class="fa-solid fa-chart-column"></i>editar
   `;
