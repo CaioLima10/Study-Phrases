@@ -12,8 +12,6 @@ const btnClose = document.querySelector(".btnClose")
 
 //opção edição documentação
 
-const modalEdit = document.querySelector(".modal-edit")
-const editBtnConfirm = document.querySelector(".edit-btn-confirm")
 
 
 async function listPhrases() {
@@ -67,7 +65,6 @@ function filterListPhrases(){
     })
 }
 
-
 function openFilter(){
   
   filter.classList.add("font-lilac")
@@ -89,21 +86,45 @@ function changeOwner(){
   containerSearchFilter.style.display = "block" 
 }
 
-
+const modalEdit = document.querySelector(".container-modal-edit");
+const editBtnConfirm = document.querySelector(".edit-btn-confirm");
+const inputEdit = document.querySelector(".input-edit");
 
 async function editPhrase({ id }) {
-  modalEdit.classList.add("active")
+  modalEdit.classList.add("active-edit");
 
-  const path = `phrase/${id}`
-  const response = await client ({ method: 'PUT' , path })
+  return new Promise((resolve, reject) => {
+    editBtnConfirm.addEventListener("click", confirmEdit);
 
-  if(response && (response  === 204)){
-    return console.log('Frase atualizada com sucesso!');
-  }else{
-    console.error(error)
-  }
+    async function confirmEdit() {
+      const newPhrase = inputEdit.value;
+      
+     
+const newInputChecked = document.querySelector('input[name="prioridade"]:checked').value;
 
-  listPhrases()
+      try {
+        const response = await client({
+          method: 'PUT',
+          path: `phrase/${id}`,
+          body: { phrase: newPhrase, priority: newInputChecked }
+        });
+
+        if (response && response.status === 204) {
+          console.log('Frase atualizada com sucesso!');
+          resolve();
+        } else {
+          reject(new Error('Failed to update the phrase.'));
+        }
+      } catch (error) {
+        console.error(error);
+        reject(error);
+      }
+
+      modalEdit.classList.remove("active-edit");
+      editBtnConfirm.removeEventListener("click", confirmEdit);
+      listPhrases();
+    }
+  });
 }
 
 async function deletePhrase({ id }) {
@@ -125,6 +146,7 @@ async function deletePhrase({ id }) {
         modal.classList.remove("active")
         btnClose.removeEventListener("click" , cancelDelete)
         btnOkDelete.removeEventListener("click" , confirmDelete)
+
         resolve(true)
 
       }
@@ -143,9 +165,7 @@ async function deletePhrase({ id }) {
     });
   }
 
-
-  listPhrases(); 
-
+listPhrases(); 
 
 function createItem(item) {
 
@@ -175,12 +195,6 @@ function createItem(item) {
     <i class="fa-solid fa-circle-minus"></i>Excluir frase
   `;
 
-  const changeOwnerLi = document.createElement("li");
-  changeOwnerLi.addEventListener("click", changeOwner);
-  changeOwnerLi.innerHTML = `
-    <i class="fa-solid fa-pen-to-square"></i>Mudar proprietário
-  `;
-
   const editPhraseLi = document.createElement("li");
   editPhraseLi.addEventListener("click", () => editPhrase({id: item.id}));
   editPhraseLi.innerHTML = `
@@ -188,7 +202,6 @@ function createItem(item) {
   `;
 
   taskMenuUl.appendChild(deletePhraseLi);
-  taskMenuUl.appendChild(changeOwnerLi);
   taskMenuUl.appendChild(editPhraseLi);
 
   settingsDiv.appendChild(showMenuIcon);
