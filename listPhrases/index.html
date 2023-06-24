@@ -7,8 +7,8 @@
   <title>Frases cadastradas</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../phrases/style.global.css">
-  <link rel="stylesheet" href="./navbar.list.css">
-  <link rel="stylesheet" href="modal.css">
+  <link rel="stylesheet" href="./navbar.css">
+  <link rel="stylesheet" href="../modal/modal.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="../http/client.js" defer></script>
   <script src="script.js" defer></script>
@@ -18,17 +18,18 @@
     <div class="hamburger-menu">
       <input id="menu__toggle" type="checkbox" />
       <label class="menu__btn" for="menu__toggle">
+        <span class="divs"></span>
       </label>
       <h1>Study Phrases</h1>
       <div class="menu__box">
-        <sapn><a class="menu__item" href="../phrases/index.html">Criar Frases</a></sapn>
-        <sapn><a class="menu__item" href="/spacePractice/index.html">Estudar</a></sapn>
+        <span><a class="menu__item" href="../phrases/index.html">Criar Frases</a></span>
+        <span><a class="menu__item" href="/spacePractice/index.html">Estudar</a></span>
       </div>
     </div>
   </header>
 
   <h1 class="title titleRegister">Frases Cadastradas</h1><br><br>
-  <span>Filtros
+  <span class="filter">Filtros
     <i id="open-filter" onclick="openFilter()" class="fa-solid fa-filter"></i>
   </span>
   <div class="container-search-filter">
@@ -53,5 +54,28 @@
 
   <div id="phrasesStayHere"></div>
 
+
+  <div class="container-modal">
+    <div class="modal">
+      <span class="titleDelete">Tem certeza de que deseja excluir esta frase?</span>
+
+      <div class="btns">
+          <button class="btnOk">Confirmar</button>
+          <button class="btnClose" >Cancelar</button>
+      </div>
+    </div>
+  </div> 
+
+  <div class="container-modal-edit">
+ 
+    
+    <div class="modal-edit">
+      <span class="title-edit">Editar Frase</span>
+      <input class="input-edit" type="text" placeholder="Frase">
+      <div class="edit-btn">
+        <button class="edit-btn-confirm">confirmar</button>
+      </div>
+    </div>
+  </div>   
 </body>
 </html>
