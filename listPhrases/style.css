@@ -157,8 +157,6 @@ div input[type="radio"]:checked {
   background-image: radial-gradient(#7545c4 50%, #ffffff 60%);
 }
 
-
-
 @media screen and (max-width: 860px)  {
   
   .titleRegister{
