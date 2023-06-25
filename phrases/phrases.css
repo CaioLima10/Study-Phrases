@@ -78,6 +78,20 @@ span{
    margin:6px;
    color: #fff;
 }
+.swal2-timer-progress-bar {
+  padding: 2px;
+  background-color: rgb(10, 255, 10);
+}
+
+.my-custom-button-class{
+  width: 80px;
+}
+
+.my-custom-title-class{
+
+  font-size: 26px;
+  color: #000;
+}
 
 input[type="radio"]{
   appearance: none;
@@ -92,13 +106,14 @@ input[type="radio"]:checked{
 }
 
 .registerButton {
-  cursor: not-allowed;
+  cursor: pointer;
   margin-top: 30px;
 }
 
 button ,  #buttonRegister{
   width: 704px;
-  background-color: #6E60BD;
+  background-color: #5540cd;
+  border: none;
   color: #ffffff;
 }
 

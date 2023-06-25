@@ -120,3 +120,36 @@ h1{
   margin-left: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  
+  .menu__btn {
+    top: 20px;
+    right: 20px;
+  }
+
+  .menu__box {
+    width: 240px;
+    padding: 60px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  h1 {
+    margin-left: 20px;
+  }
+
+  .menu__btn {
+    top: 20px;
+    right: 15px;
+  }
+
+  .menu__box {
+    width: 200px;
+    padding: 40px 0;
+  }
+
+  .menu__item {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+}

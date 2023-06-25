@@ -1,8 +1,14 @@
 body {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-family: 'inter';
+}
+
+.font-lilac{
+  color: #AA9CFF !important;
 }
 
 .border-color-phrases {
@@ -11,47 +17,93 @@ body {
   width: 3px;
   height: 24px;
   background-color: greenyellow;
-
-}
-body{
-  font-family: 'inter'; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.title{
+.title {
   width: 680px;
 }
 
-span{
-  width: 680px;
+span {
+  width: 700px;
+  margin-bottom: 10px;
   color: #fff;
   font-weight: 600;
   font-size: 18px;
 }
-ul , li{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+
+ul,
+li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   list-style: none;
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.container-search-filter{
+.container-list-phrases {
+  position: relative;
+  display: inline;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 200px;
+  margin-right: 20px;
+}
+
+.phrases {
+  color: #fff;
+  display: flex;
+  width: 500px; 
+  justify-content: space-between;
+  word-break: break-word;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.fa-ellipsis-vertical{
+  width: 30px;
+  padding: 8px;
+  border-radius: 100px;
+  text-align: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.055);
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fa-ellipsis-vertical:hover{
+  background-color: rgba(0, 0, 0, 0.160);
+  transition: .10s ease-in-out;
+}
+
+.btnDeleteEditByPhrase{
+  background: none;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.btnDeleteEditByPhrase:hover{
+  background-color: rgba(0, 0, 0, 0.160);
+  border-bottom: 1px solid #00000072;
+
+}
+.fa-circle-minus , .fa-chart-column{
+  font-family: sans-serif;
+  width: 20px;
+  cursor: pointer;
+}
+
+.container-search-filter {
   display: none;
 }
 
-#search-input {
-  display: inline;
-  width: 640px;
-  font-size: 22px;
-  padding-left: 15px;
-  height: 50px;
-
-}
 .input-wrapper {
-position: relative;
+  position: relative;
 }
 
 #filter-input {
@@ -60,8 +112,7 @@ position: relative;
   border-radius: 2px;
   background-color: #fff;
   border: 0;
-  color:#12074d;
-
+  color: #12074d;
   font-size: 1.6rem;
 }
 
@@ -73,333 +124,174 @@ position: relative;
 
 #icons-filter {
   font-size: 1.4rem;
-  color: #49407D;
+  color: #49407d;
   border-radius: 50%;
-  padding: .1rem;
+  padding: 0.1rem;
 }
 
-
-#applyAndFilter{
+#applyAndFilter {
   width: 700px;
   height: 50px;
   font-weight: 600;
   font-size: 22px;
   margin-bottom: 3rem;
-  background-color: #6E60BD;
+  background-color: #6e60bd;
   color: #fff;
   border: none;
   cursor: pointer;
   margin-top: 2rem;
 }
-
-ul li{
-  list-style: none;
-  display: flex;
-  text-align: center;
+.my-custom-text-class{
+  color: #000;
 }
 
-.container-list-phrases{
-  display: inline;
-  color: #fff;
-  font-size: 20px;
-  margin-right:20px ;
-  width: 740px;
-
-}
-
-
-.phrases{ 
-  color: #fff;
-  display: flex;
-  width: 675px;
-  justify-content: space-between;
-  word-break: break-word;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  margin-left: 20px;
-  margin-right: 40px;
-}
-
-#registerMorePhrases{
-  width: 490px;
-  margin-right: 20px;
-}
-
-#registerMorePhrases{
-  margin-top: 4rem;
-  margin-left: 20px;
-  width: 705px;
-  margin-right: -1px;
-  text-align: center;
-  background-color: #6E60BD;
-}
-#aLink{
-  color: #fff;
-  font-weight: 600;
-}
-label {
-  display: inline;
-  color: #ffffff;
-  font-size: 18px;
-  margin: 5px;
- 
-}
-div input[type="radio"] {
+input[type="radio"]{
   appearance: none;
-  padding: 8px;
-  border: 1px solid white;
+  background-color: #fff;
+  border: 2px solid #fff;
+  padding: 0.5rem;
   border-radius: 50%;
-  background-color: #ffffff;
   cursor: pointer;
 }
-
-div input[type="radio"]:checked {
-  background-image: radial-gradient(#7545c4 50%, #ffffff 60%);
+input[type="radio"]:checked{
+  background: #6E60BD
 }
 
-@media screen and (max-width: 860px)  {
-  
-  .titleRegister{
-    width: 600px;
-  }
-  .container-account-phrase{
-    width: 600px;
-  }
-  
-  span{
-    width: 580px;
-    color: #fff;
-    font-size: 18px;
-  }
-  .container-search-filter{
-    width: 580px;
 
-  }
-  .input-search-phrases {
-    width: 580px;
-  }
-  
-  #filter-input {
-    font-size: 18px;
-    height: 25px;
-    width: 540px;
-  }
-  #icons-filter{
-    right: -1px;
-    bottom: 1.0rem;
-    font-size: 20px;
-  }
-  #applyAndFilter{
-    width: 590px;
-  }
-  
-  .container-list-phrases{
-    display: flex;
-    width: 580px;
-  }
-  .phrases{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 35px;
-    width: 560px;
-  }
-  #registerMorePhrases{
-    width: 600px;
-    margin-left: -1px;
-  }
-  
-}
-@media screen and (max-width: 720px)  {
-
-  .titleRegister{
-    width: 520px;
-  }
-  .container-account-phrase{
-    width: 520px;
-  }
+@media screen and (max-width: 800px) {
 
   span{
-    width: 520px;
-    color: #fff;
-    font-size: 18px;
+    width: 530px;
   }
-  .container-search-filter{
-    width: 520px;
-  }
-  .input-search-phrases {
-    width: 520px;
-  }
-
-  #filter-input {
-    font-size: 18px;
-    height: 25px;
+  #filter-input{
     width: 480px;
-  }
-  #icons-filter{
-    bottom: 1.0rem;
-    font-size: 20px;
   }
   #applyAndFilter{
     width: 530px;
   }
-
-  .container-list-phrases{
-    display: flex;
+  #search-input {
     width: 480px;
   }
+
   .phrases{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 40px;
-    width: 500px;
+   width: 300px;
   }
-
 }
-@media screen and (max-width: 580px)  {
 
-  .titleRegister{
-    width: 400px;
-  }
+
+@media screen and (max-width: 690px) {
 
   span{
-    width: 400px;
-    color: #fff;
-    font-size: 18px;
+    width: 470px;
   }
-  .container-search-filter{
-    width: 400px;
-  }
-  .input-search-phrases {
-    width: 390px;
-  }
-  #filter-input {
-    font-size: 18px;
-    height: 25px;
-    width: 350px;
-  }
-  #icons-filter{
-    bottom: 1.0rem;
+  #filter-input{
+    width: 420px;
     font-size: 20px;
   }
-  #applyAndFilter{
-    width: 405px;
+  .title{
+    font-size: 26px;
+    width: 470px;
   }
+  #applyAndFilter{
+    width: 470px;
+  }
+  #search-input {
+    width: 400px;
+  }
+  .phrases{
+   width: 260px;
+  }
+}
 
-  .container-list-phrases{
-    display: flex;
+@media screen and (max-width: 590px) {
+
+  span{
+    width: 430px;
+  }
+  #filter-input{
     width: 380px;
   }
-  .phrases{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 40px;
-    width: 375px;
+  .title{
+    font-size: 24px;
+    width: 440px;
   }
-
-
-}
-@media screen and (max-width: 455px)  {
-
-  .titleRegister{
+  #applyAndFilter{
+    width: 440px;
+  }
+  #search-input {
     width: 400px;
   }
-  .container-account-phrase{
-    width: 390px;
+  .phrases{
+   width: 260px;
   }
+}
+
+@media screen and (max-width: 516px) {
 
   span{
-    width: 390px;
-    color: #fff;
-    font-size: 18px;
-  }
-  .container-search-filter{
-    width: 390px;
-    
-  }
-  #filter-input {
-    font-size: 18px;
-    height: 25px;
-    width: 340px;
-  }
-  #icons-filter{
-    bottom: 1.0rem;
-    font-size: 20px;
-  }
-  #applyAndFilter{
-    width: 390px;
-  }
-
-  .container-list-phrases{
-    display: flex;
-    width: 340px;
-  
-  }
-  #registerMorePhrases{
-    width: 390px;
-    margin-left: -1px;
-   
-  }
-  .phrases{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 40px;
     width: 370px;
   }
-
-
-}
-@media screen and (max-width: 355px)  {
-
-  .titleRegister{
-    width: 385px;
-  }
-  .container-account-phrase{
-    width: 350px;
-  }
-
-  span{
-    width: 270px;
-    color: #fff;
-    font-size: 16px;
-  }
-  .container-search-filter{
-    width: 290px;
-    
-    
-  }
-  #filter-input {
-    font-size: 18px;
-    height: 25px;
-    width: 260px;
-  }
-  #icons-filter{
-    width: 40px;
-    bottom: 1.0rem;
+  #filter-input{
+    width: 320px;
     font-size: 20px;
   }
+  .title{
+    width: 380px;
+  }
   #applyAndFilter{
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-    width: 290px;
+    width: 370px;
   }
-
-  .container-list-phrases{
-    display: flex;
-    width: 200px;
-  
-  }
-  #registerMorePhrases{
-    width: 240px;
-    margin-left: -1px;
-   
+  #search-input {
+    width: 400px;
   }
   .phrases{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 40px;
+   width: 200px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  span{
+    width: 320px;
+  }
+  #filter-input{
+    width: 260px;
+    font-size: 18px;
+  }
+  .title{
+    width: 320px;
+  }
+  #applyAndFilter{
+    width: 320px;
+  }
+  #search-input {
+    width: 300px;
+  }
+  .phrases{
+   width: 180px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+
+  span{
+    width: 280px;
+  }
+  #filter-input{
+    width: 220px;
+    font-size: 18px;
+  }
+  .title{
+    width: 280px;
+  }
+  #applyAndFilter{
+    width: 280px;
+  }
+  #search-input {
     width: 260px;
   }
-
-
+  .phrases{
+   width: 160px;
+  }
 }
+
