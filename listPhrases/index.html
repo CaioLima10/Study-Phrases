@@ -7,9 +7,12 @@
   <title>Frases cadastradas</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../phrases/style.global.css">
-  <link rel="stylesheet" href="./navbar.css">
+  <link rel="stylesheet" href="../header/navbar.css">
   <link rel="stylesheet" href="../modal/modal.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <script src="../http/client.js" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -35,7 +38,7 @@
   <div class="container-search-filter">
     <div class="input-wrapper">
       <label for="filter" class="sr-only">Pesquisar</label>
-      <input id="filter-input" type="text" placeholder="Filter">
+      <input id="filter-input" onclick="openFilter()" type="text" placeholder="Filter">
      
     </div>
     <div id="container-radio">
@@ -70,7 +73,7 @@
     <div class="modal-edit">
       <span class="title-edit">Editar Frase</span>
       <input class="input-edit" type="text" placeholder="Frase">
-   
+      
         <div id="radioInformation" class="cor">
             <input id="radioOne" type="radio" name="prioridade" value="low">
             <label id="radioOne"  for="radioOne">Baixa</label>
@@ -79,11 +82,14 @@
             <input id="radioThree" type="radio" name="prioridade" value="high">
             <label id="radioThree" for="radioThree">Alta</label>
           </div>
-    
-      <div class="edit-btn">
-        <button class="edit-btn-confirm">confirmar</button>
+          
+          <div class="edit-btn">
+            <button class="edit-btn-confirm">Confirmar</button>
+            <button class="close-container">Cancelar</button>
       </div>
     </div>
-  </div>   
+  </div> 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 </html>
