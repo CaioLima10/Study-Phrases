@@ -3,9 +3,13 @@ const buttonRegister = document.getElementById("buttonRegister");
 const phrasesTextarea = document.getElementById("phrase");
 const phrasesStayHere = document.querySelector(".phrasesStayHere");
 
-buttonRegister.addEventListener("click", function () {
-  disableButton();
-});
+// abrir e fechar modal
+const modalBackgroundBody = document.querySelector(".modal-background")
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbar = document.getElementById('navbar');
+const closeIcons = document.querySelectorAll('.fa-times');
+
+
 
 function enableButton() {
   buttonRegister.disabled = true;
@@ -31,6 +35,32 @@ phrasesTextarea.addEventListener('input', () => {
   phrasesTextarea.value = phrasesTextarea.value
     ? phrasesTextarea.value.trimStart()
     : '';
+});
+
+
+navbarToggle.addEventListener('click', () => {
+  navbar.classList.toggle('open');
+});
+
+closeIcons.forEach((closeIcon) => {
+  closeIcon.addEventListener('click', () => {
+    navbar.classList.remove('open');
+  });
+});
+
+const openIcon = document.querySelector(".open-icon")
+const closeIcon = document.querySelector(".fa-times")
+
+openIcon.addEventListener("click", () => {
+  modalBackgroundBody.style.display = "block"
+})
+
+closeIcon.addEventListener("click", () => {
+  modalBackgroundBody.style.display = "none"
+})
+
+buttonRegister.addEventListener("click", function () {
+  disableButton();
 });
 
 form.addEventListener('submit', (event) => {
