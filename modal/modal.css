@@ -1,20 +1,39 @@
+
+.fa-ellipsis-vertical{
+  margin-right: 46px;
+  width: 30px;
+  padding: 8px;
+  border-radius: 100px;
+  text-align: center;
+  align-items: center;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fa-ellipsis-vertical:hover{
+  background-color: rgba(0, 0, 0, 0.160);
+  transition: .10s ease-in-out;
+}
+
 .task .settings {
-    position: fixed;
-    display: flex;
+  position: fixed;
+  display: flex;
 }
 
 .task-menu {
-    position: absolute;
-    background: #fff;
-    padding: 10px 10px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.144);
-    width: 160px;
-    right: 3rem;
-    height: 95px;
-    transform: scale(0);
-    transform-origin: top right;
-    transition: transform 0.2s ease;
-    z-index: 2;
+  position: absolute;
+  background: #fff;
+  padding: 10px 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.144);
+  width: 160px;
+  top: 2.5rem;
+  right: 5rem;
+  height: 95px;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
 .settings .task-menu.show {
@@ -22,20 +41,20 @@
 }
 
 #showModal {
-    display: flex;
-    cursor: pointer;
-    font-size: 22px;
-    color: #fff;
+  display: flex;
+  cursor: pointer;
+  font-size: 22px;
+  color: #fff;
 }
 
 #deletePhrase,
 #editPhrase,
 #changeOwner {
-    margin-bottom: 10px;
-    display: inline;
-    cursor: pointer;
-    font-size: 15px;
-    color: #12074d;
+  margin-bottom: 10px;
+  display: inline;
+  cursor: pointer;
+  font-size: 15px;
+  color: #12074d;
 }
 
 #deletePhrase:hover,
@@ -75,7 +94,7 @@
   .task-menu {
     width: 100px;
     height: 65px;
-     right: 0;
+    right: 0;
   }
 
   #showModal {
@@ -103,35 +122,42 @@
 /* modal de delete */
 
 .container-modal{
-    width: 1300px;
-    height: 300px;
-    position: fixed;
-    top: 200px;
-    z-index: 999;
-    justify-content: center;
-    display: none;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  position: fixed;
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
 }
 
 .modal{
-    display: flex;
-    flex-direction: column;
-    background: #ededed;
-    padding: 30px;
-    border-radius: 10px;
-}
+  display: flex;
+  flex-direction: column;
+  background: #ededed;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
 
+}
 .active{
-    display: flex;
+  display: flex;
 }
 
 .active , .modal{
     animation: modal .4s;
 }
+
 .titleDelete{
     margin-top: 30px;
 }
 
 .titleDelete , .btns{
+    width: 100%;
     text-align: center;
     color: #000;
 }
@@ -140,7 +166,7 @@
     padding: 12px 8px;
     width: 100%;
     height: 50px;
-    margin: 10px;
+    margin-top: 20px;
     font-size: 18px;
     border: none;
     background-color: #5540cd;
@@ -161,67 +187,108 @@
 
 /* modal editar frases */
 
-.container-modal-edit{
-    width: 1300px;
-    height: 400px;
-    display: flex;
-    position: fixed;
-    display: none;
-    top: 120px;
-    z-index: 999;
-    justify-content: center;
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.63);
+  z-index: 2;
+  display: none;
+}
+
+@media screen and (max-width: 690px) {
+  .container-modal{
+      width: 400px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .container-modal{
+      width: 350px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-modal{
+      width: 300px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .container-modal{
+      width: 250px;
+  }
+}
+
+
+
+
+
+/* Resto do seu código... */
+
+.container-modal-edit {
+  width: 550px;
+  height: 400px;
+  display: flex;
+  position: fixed;
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
 }
 
 .modal-edit{
-    display: flex;
-    flex-direction: column;
-    background: #ededed;
-    padding: 30px;
-    border-radius: 8px;
-    width: 50%;
+  display: flex;
+  flex-direction: column;
+  background: #ededed;
+  padding: 30px;
+  border-radius: 8px;
 }
 
+
 .title-edit{
-    color: #000;
-    width: 100%;
-    font-size: 30px;
+  color: #000;
+  width: 100%;
+  font-size: 30px;
 }
 .input-edit{
-    margin-top: 20px;
-    border-radius: 8px;
-    border: none;
-    border: 1px solid #000;
-    height: 50px;
-    padding-left: 10px;
-    font-size: 22px;
-    margin-bottom: 25px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: none;
+  border: 1px solid #000;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 22px;
+  margin-bottom: 25px;
 }
 
 .edit-btn-confirm{
-    margin-top: 25px;
-    width: 100%;
-    height: 50px;
-    border: none;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #fff;
-    background-color: #5540cd;
+  margin-top: 25px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #5540cd;
 }
 
 input[type="radio"]{
-    appearance: none;
-    background-color: #fff;
-    border: 2px solid #05050597;
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
 }
 input[type="radio"]:checked{
-    background: #6E60BD
+  background: #6E60BD
 }
-
-
 
 #radioOne , #radioTwo , #radioThree{
     color: #000;
@@ -234,7 +301,7 @@ input[type="radio"]:checked{
 }
 
 .active-edit{
-    display: flex;
+    display: block;
 }
 .active-edit , .modal-edit{
     animation: modal .4s;
@@ -258,49 +325,28 @@ input[type="radio"]:checked{
     padding: 14px;
 }  
 
-@media screen and (max-width: 800px) {
-    .container-modal-edit{
-        width: 1100px;
-    }
-    .container-modal{
-        width: 900px;
-      }
-
-  }
-  
   
   @media screen and (max-width: 690px) {
     .container-modal-edit{
-        width: 900px;
-    }
-    .container-modal{
-        width: 700px;
-      }
-
-  }
-  
-  @media screen and (max-width: 590px) {
-    .container-modal-edit{
-        width: 700px;
-        height: 370px;
-        padding: 8px;
-    }
-    .input-edit{
-        font-size: 16px;
-
-    }
-    .container-modal{
-        width: 500px;
-      }
-
-  }
-  
-  @media screen and (max-width: 432px) {
-  
-    .container-modal-edit{
         width: 400px;
-        height: 370px;
-        padding: 8px;
+    }
+
+
+  }
+  
+  @media screen and (max-width: 525px) {
+    .container-modal-edit{
+        width: 350px;
+    
+    }
+ 
+  }
+  
+  @media screen and (max-width: 452px) {
+  
+    .container-modal-edit{
+        width: 300px;
+
     }
     .input-edit{
         font-size: 14px;
@@ -315,4 +361,23 @@ input[type="radio"]:checked{
     
     }
 }
- 
+   
+@media screen and (max-width: 395px) {
+  
+  .container-modal-edit{
+      width: 250px;
+      align-items: center;
+  }
+  .input-edit{
+      font-size: 14px;
+
+  }
+  #radioOne , #radioTwo , #radioThree{
+      font-size: 16px;
+  }
+
+  input[type="radio"]{
+      padding: 0.4rem;
+  
+  }
+}
