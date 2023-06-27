@@ -1,7 +1,7 @@
 const client = ({
    body = null, path = '', method = 'GET'
 }) => {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = 'http://localhost:3001';
 
   return new Promise((resolve, reject) => {
     fetch(`${baseURL}/${path}`, {
