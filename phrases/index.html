@@ -4,73 +4,114 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Site de Frases</title>
+
     <link rel="stylesheet" href="./phrases.css" />
     <link rel="stylesheet" href="../phrases/style.global.css" />
     <link rel="stylesheet" href="../header/navbar.css">
-    <link rel="stylesheet" href="../alert.success/alert.sucess.css">
+    <link rel="stylesheet" href="../modal/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"defer></script>
     <script src="../http/client.js" defer></script>
     <script src="./script.js" defer></script>
    
-  </head>
-  <body>
+</head>
+<body>
+  <div class="modal-background"></div>
 
-    <header>
-      <div class="hamburger-menu">
-        <input  id="menu__toggle" type="checkbox" />
-        <label  class="menu__btn" id="menu-btn" for="menu__toggle">
-          <span></span>
-        </label>
-        
-        <h1 class="title-header">Study Phrases</h1>
-        <ul class="menu__box">
-          <li><a class="menu__item"href="./index.html">Criar Frases</a></li>
-          <li><a class="menu__item" id="create_phrase" href="../listPhrases/index.html">Frases</a>
-            <i class="fa fa-caret-left" id="next-left-phrase" aria-hidden="true"></i>
-          </li>
-          <li><a class="menu__item" href="/spacePractice/index.html">Estudar</a></li>
-        </ul>
-      </div>
-    </header>
+  <header class="navbar-header">
+    <h2>
+      <a class="menu__item" href="../phrases/index.html">
+        frase em ingles    
+      </a>
+    </h2>
+    <div class="navbar-toggle" id="navbar-toggle">
+      <span class="open-icon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </div>
+  </header>
 
-    <form class="form" id="form">
-      <h1 class="title titleRegister">Cadastrar frase</h1>
+  <nav class="navbar" id="navbar">
+    <ul class="navbar-menu" id="navbar-menu">
+      <i class="fas fa-times"></i>
+      <span class="container-item-links">
+        <div class="container-links">
+          <span class="container-item-links">
+            <a id="menu__links" class="menu__item" href="../listPhrases/index.html">
+              Frases
+            </a>
+          </span >
+          <span class="container-item-links">
+            <a id="menu__links" class="menu__item" href="/spacePractice/index.html">
+              Estudar
+            </a>
+          </span>
+      </span>
+    </div>  
+    </ul>
+  </nav>
 
-      <textarea
-        id="phrase"
-        class="textarea"
-        type="text"
-        placeholder="Frase"
-        autofocus
-      ></textarea>
-      
-      <div id="container-radio">     
-        <div id="radioInformation" class="cor">
-          <span>Prioridade</span><br><br>
-          <input id="radio1" type="radio" name="prioridade" value="low">
-          <label for="radio1">Baixa</label>
-          <input id="radio2" type="radio" name="prioridade" value="medium" >
-          <label for="radio2">Média</label>
-          <input id="radio3" type="radio" name="prioridade" value="high">
-          <label for="radio3">Alta</label>
-        </div>
-      </div>
+  <form class="form" id="form">
+    <h1 class="title titleRegister">
+      Cadastrar frase
+    </h1>
 
-      <button 
-        id="buttonRegister"
-        
-        class="registerButton btn"
-        type="submit"
-      >
-        Criar
-      </button>
-    </form>
-    <div class="borderColor"></div>
-
-    <footer class="alert-success-phrase"></footer>
+    <textarea
+      id="phrase"
+      class="textarea"
+      type="text"
+      placeholder="Frase"
+      autofocus
+    ></textarea>
     
-  </body>
+    <div id="container-radio">     
+      <div id="radioInformation">
+        <div class="container-priority">
+          <span>Prioridade</span>
+        </div>
+        <input 
+          id="radio1" 
+          type="radio" 
+          name="prioridade" 
+          value="low"
+        >
+        <label 
+          for="radio1">
+          Baixa
+        </label>
+        <input 
+          id="radio2" 
+          type="radio" 
+          name="prioridade" 
+          value="medium" 
+        >
+        <label 
+          for="radio2">
+          Média
+        </label>
+        <input 
+          id="radio3" 
+          type="radio" 
+          name="prioridade" 
+          value="high"
+        >
+        <label 
+          for="radio3">
+          Alta
+        </label>
+      </div>
+    </div>
+
+    <button 
+      id="buttonRegister"
+      class="registerButton btn"
+      type="submit"
+    >
+      Criar
+    </button>
+  </form>
+</body>
 </html>

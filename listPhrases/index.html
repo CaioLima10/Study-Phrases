@@ -4,92 +4,234 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Frases cadastradas</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../phrases/style.global.css">
   <link rel="stylesheet" href="../header/navbar.css">
   <link rel="stylesheet" href="../modal/modal.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
   integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <script src="../header/script.js" defer></script>
   <script src="../http/client.js" defer></script>
   <script src="script.js" defer></script>
+
 </head>
 <body>
-  <header>
-    <div class="hamburger-menu">
-      <input id="menu__toggle" type="checkbox" />
-      <label class="menu__btn" for="menu__toggle">
-        <span class="divs"></span>
-      </label>
-      <h1>Study Phrases</h1>
-      <div class="menu__box">
-        <span><a class="menu__item" href="../phrases/index.html">Criar Frases</a></span>
-        <span><a class="menu__item" href="/spacePractice/index.html">Estudar</a></span>
-      </div>
+  <header class="navbar-header">
+    <h2>
+      <a class="menu__item" href="../phrases/index.html">
+        frase em ingles    
+      </a>
+    </h2>
+    <div class="navbar-toggle" id="navbar-toggle">
+      <span class="open-icon">
+        <i class="fas fa-bars"></i>
+      </span>
     </div>
   </header>
 
-  <h1 class="title titleRegister">Frases Cadastradas</h1><br><br>
-  <span class="filter">Filtros
-    <i id="open-filter" onclick="openFilter()" class="fa-solid fa-filter"></i>
+  <nav class="navbar" id="navbar">
+    <ul class="navbar-menu" id="navbar-menu">
+      <i class="fas fa-times"></i>
+    <div class="container-links">
+      <span class="container-item-links">
+        <a id="menu__links"  class="menu__item" href="../phrases/index.html">
+          Criar Frases
+        </a>
+      </span >
+      <span class="container-item-links">
+        <a id="menu__links" class="menu__item" href="/spacePractice/index.html">
+          Estudar
+        </a>
+      </span>
+    </div>  
+    </ul>
+  </nav>
+  
+  
+  <h1 class="title titleRegister">Frases Cadastradas</h1>
+
+  <span class="filter">
+
+    <label 
+    class="text-open-filter">
+      Filtros
+    </label>
+
+    <i 
+      id="open-filter"
+      onclick="openFilter()"
+      class="fa-solid fa-filter">
+    </i>
+
+    <i 
+      id="close-filter" 
+      onclick="closeFilter()" 
+      class="fa-solid fa-filter">
+    </i>
   </span>
+
   <div class="container-search-filter">
     <div class="input-wrapper">
-      <label for="filter" class="sr-only">Pesquisar</label>
-      <input id="filter-input" onclick="openFilter()" type="text" placeholder="Filter">
-     
-    </div>
+      <label 
+        for="filter" 
+        class="sr-only">
+        Pesquisar
+      </label>
+      <input 
+        id="filter-input" 
+        type="text" 
+        placeholder="Filter"
+      >   
+  </div>
+
     <div id="container-radio">
-      <div id="radioInformation" class="cor">
-        <br><span>Prioridade</span><br><br>
-        <input id="radio1" type="radio" name="prioridade" value="low">
-        <label for="radio1">Baixa</label>
-        <input id="radio2" type="radio" name="prioridade" value="medium">
-        <label for="radio2">Média</label>
-        <input id="radio3" type="radio" name="prioridade" value="high">
-        <label for="radio3">Alta</label>
+      <div id="radioInformation">
+        <div class="container-priority">
+          <span>Prioridade</span>
+        </div>
+        <input
+          id="radio1"
+          type="radio" 
+          name="priority" 
+          value="low"
+        >
+        <label 
+          for="radio1">
+          Baixa
+        </label>
+
+        <input 
+          id="radio2" 
+          type="radio" 
+          name="priority" 
+          value="medium"
+        >
+        <label 
+          for="radio2"
+          >Média
+        </label>
+
+        <input 
+          id="radio3" 
+          type="radio" 
+          name="priority" 
+          value="high">
+        <label 
+          for="radio3">
+          Alta
+        </label>
       </div>
     </div>
   </div>
-  <button id="applyAndFilter" onclick="closeModalApply()">Aplicar</button>
+  <button 
+    id="applyAndFilter" 
+    onclick="closeModalApply()">
+    Aplicar
+  </button>
 
+  <!-- listar frases -->
   <div id="phrasesStayHere"></div>
+
+  <h3 class="phrases-vazia"></h3>
 
 
   <div class="container-modal">
     <div class="modal">
-      <span class="titleDelete">Tem certeza de que deseja excluir esta frase?</span>
+      <span 
+        class="titleDelete">
+        Tem certeza de que deseja excluir esta frase?
+      </span>
 
       <div class="btns">
-          <button class="btnOk">Confirmar</button>
-          <button class="btnClose" >Cancelar</button>
+          <button 
+            class="btnOk">
+            Confirmar
+          </button>
+          <button 
+            class="btnClose">
+            Cancelar
+          </button>
       </div>
     </div>
   </div> 
+<div>
 
+
+
+  <div class="modal-background"></div>
+  
   <div class="container-modal-edit">
     <div class="modal-edit">
-      <span class="title-edit">Editar Frase</span>
-      <input class="input-edit" type="text" placeholder="Frase">
-      
-        <div id="radioInformation" class="cor">
-            <input id="radioOne" type="radio" name="prioridade" value="low">
-            <label id="radioOne"  for="radioOne">Baixa</label>
-            <input id="radioTwo" type="radio" name="prioridade" value="medium">
-            <label id="radioTwo"  for="radioTwo">Média</label>
-            <input id="radioThree" type="radio" name="prioridade" value="high">
-            <label id="radioThree" for="radioThree">Alta</label>
-          </div>
-          
-          <div class="edit-btn">
-            <button class="edit-btn-confirm">Confirmar</button>
-            <button class="close-container">Cancelar</button>
-      </div>
+      <span 
+      class="title-edit">
+      Editar Frase
+    </span>
+      <input 
+      class="input-edit" 
+      type="text" 
+      placeholder="Frase"
+      >
+  
+    <div id="radioInformation">
+      <input 
+        id="radioOne" 
+        type="radio" 
+        name="prioridade" 
+        value="low">
+      <label 
+        id="radioOne" 
+        for="radioOne">
+          Baixa
+      </label>
+      <input 
+        id="radioTwo" 
+        type="radio" 
+        name="prioridade" 
+        value="medium"
+      >
+      <label 
+        id="radioTwo" 
+        for="radioTwo"
+      >
+        Média
+    </label>
+      <input 
+        id="radioThree" 
+        type="radio" 
+        name="prioridade" 
+        value="high"
+      >
+      <label 
+        id="radioThree" 
+        for="radioThree"
+      >
+        Alta
+    </label>
     </div>
-  </div> 
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <div class="edit-btn">
+      <button 
+        class="edit-btn-confirm">
+          Confirmar
+    </button>
+      <button 
+        class="close-container">
+          Cancelar
+    </button>
+    </div>
+    </div>
+  </div>
+  
+  <script 
+    src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+  </script>
 
 </body>
 </html>
