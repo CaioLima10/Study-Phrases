@@ -2,25 +2,58 @@ const form = document.getElementById("form");
 const buttonRegister = document.getElementById("buttonRegister");
 const phrasesTextarea = document.getElementById("phrase");
 const phrasesStayHere = document.querySelector(".phrasesStayHere");
-
 // abrir e fechar modal
 const modalBackgroundBody = document.querySelector(".modal-background")
 const navbarToggle = document.getElementById('navbar-toggle');
 const navbar = document.getElementById('navbar');
 const closeIcons = document.querySelectorAll('.fa-times');
 
+// slider das frases select
+const containerSelect = document.querySelector(".container-select")
+
+const body = document.querySelector("body");
+const header = document.querySelector("header")
+const toggle = document.querySelector(".toggle");
+
+const getTheme = localStorage.getItem("theme");
+if (getTheme === "dark") {
+  body.classList.add("dark");
+  header.classList.add("dark")
+  buttonRegister.classList.add("dark")
+  toggle.classList.add("active");
+  toggle.innerHTML = `<i class="fas fa-moon"></i>`
+}else{
+  toggle.innerHTML = `<i class="fas fa-sun"></i>`
+}
+
+toggle.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  header.classList.toggle("dark")
+  buttonRegister.classList.toggle("dark")
+  toggle.classList.toggle("active");
+  
+  if (body.classList.contains("dark") 
+  && header.classList.contains("dark")
+  && buttonRegister.classList.contains("dark")
+      ) {
+    localStorage.setItem("theme", "dark");
+    toggle.innerHTML = `<i class="fas fa-moon"></i>`
+  }
+  else {
+    localStorage.setItem("theme", "light");
+    toggle.innerHTML = `<i class="fas fa-sun"></i>`
+  }
+});
 
 
 function enableButton() {
   buttonRegister.disabled = true;
   buttonRegister.style.cursor = 'not-allowed';
-  buttonRegister.style.backgroundColor = '#5b5f6e';
 }
 
 function disableButton() {
   buttonRegister.disabled = false;
   buttonRegister.style.cursor = 'pointer';
-  buttonRegister.style.backgroundColor = '#5540cd';
 }
 
 phrasesTextarea.addEventListener("keyup", () => {
