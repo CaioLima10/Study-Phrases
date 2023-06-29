@@ -70,8 +70,24 @@ form.addEventListener('submit', (event) => {
   const textarea = document.getElementById("phrase");
 
   try {
+
+    if(textarea.value.length < 3){
+      Swal.fire({
+        title: 'necessario ter no mínimo 3 caracteres',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+        customClass: {
+          confirmButton: 'my-custom-button-class',
+          title: 'my-custom-title-class'
+        }
+      });
+
+      textarea.value = ""
+
+      return 
+    }
+
     if (!inputChecked || !textarea.value) {
- 
       Swal.fire({
         title: 'Por favor, preencha todos os campos.',
         showCancelButton: false,
@@ -83,6 +99,7 @@ form.addEventListener('submit', (event) => {
       });
       return;
     }
+
 
     const isPhraseDuplicate = checkDuplicatePhrase(textarea.value);
     if (isPhraseDuplicate) {
@@ -141,8 +158,9 @@ function displaySuccessAlert() {
 const existingPhrases = [];
 
 function checkDuplicatePhrase(phrase) {
-  const isDuplicate = existingPhrases.includes(phrase);
-  return isDuplicate;
+const lowerCasePhrase = phrase.toLowerCase();
+const isDuplicate = existingPhrases.some(existingPhrase => existingPhrase.toLowerCase() === lowerCasePhrase);
+return isDuplicate;
 }
 
 
