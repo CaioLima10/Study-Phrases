@@ -29,6 +29,7 @@
         Study Phrases  
       </a>
     </h2>
+    <div class="toggle"></div>
     <div class="navbar-toggle" id="navbar-toggle">
       <span class="open-icon">
         <i class="fas fa-bars"></i>
@@ -133,7 +134,8 @@
     </div>
   </div>
   <button 
-    id="applyAndFilter">
+    id="button"
+    class="applyAndFilter">
     Aplicar
   </button>
 
@@ -151,11 +153,13 @@
       </span>
 
       <div class="btns">
-          <button 
+          <button
+            id="button"
             class="btnOk">
             Confirmar
           </button>
           <button 
+            id="button"
             class="btnClose">
             Cancelar
           </button>
@@ -217,10 +221,12 @@
 
     <div class="edit-btn">
       <button 
+        id="button"
         class="edit-btn-confirm">
           Confirmar
     </button>
       <button 
+        id="button"
         class="close-container">
           Cancelar
     </button>
@@ -234,17 +240,19 @@
   <div>
     <button id="returnPhrases"  class="back-sentences">voltar frases</button>
   </div>
-  <div class="container-selection">
-    <button class="next-button"><</button>
+  <div class="container-select">
+    <button  class="next-button"><</button>
     <select>
-      <option></option>
-      <option value="pagFive">pagina / 5</option>
-      <option value="pagTen">pagina / 10</option>
-      <option value="pagFifteen">pagina / 15</option>
+        <option value="pagThree" selected >Página / 3</option>
+        <option value="pagFive">Página / 5</option>
+        <option value="pagTen">Página / 10</option>
+        <option value="pagFifteen">Página / 15</option>
+        <option value="pagTwenty">Página / 20</option>
     </select>
-    <button class="prev-button">></button>
+    <button  class="prev-button">></button>
   </div>
-  
+
+
   <script 
     src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
   </script>
