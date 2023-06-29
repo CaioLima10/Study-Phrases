@@ -29,7 +29,6 @@ body {
   color: greenyellow !important;
 }
 
-
 form {
   display: flex;
   align-items: center;
@@ -104,6 +103,7 @@ input[type="radio"]{
   border-radius: 50%;
   cursor: pointer;
 }
+
 input[type="radio"]:checked{
  background: #6E60BD
 }
@@ -111,6 +111,10 @@ input[type="radio"]:checked{
 .registerButton {
   cursor: pointer;
   margin-top: 30px;
+}
+
+#buttonRegister.dark{
+  background-color: #21262d;
 }
 
 button ,  #buttonRegister{
