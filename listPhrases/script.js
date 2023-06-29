@@ -27,6 +27,11 @@ const closeIcons = document.querySelectorAll('.fa-times');
 const openIcon = document.querySelector(".open-icon")
 const closeIcon = document.querySelector(".fa-times")
 
+// slider das frases select
+const containerSelect = document.querySelector(".container-select")
+
+
+
 navbarToggle.addEventListener('click', () => {
   navbar.classList.toggle('open');
 });
@@ -123,10 +128,10 @@ async function listPhrases() {
   
   phrasesList.innerHTML = "";
 
-  const minhasFrases = await listPhrase();
-  console.log({ minhasFrases })
-  if (minhasFrases.length) {
-    for (const item of minhasFrases) {
+  const myPhrases = await listPhrase();
+  console.log({ myPhrases })
+  if (myPhrases.length) {
+    for (const item of myPhrases) {
       const { id, phrase, priority } = item;
       const ul = createItem({ id, phrase, priority });
       phrasesList.append(ul);
@@ -152,7 +157,7 @@ function showMenu(selectedPhrase ){
 const backSentences = document.querySelector(".back-sentences")
 
 document.addEventListener("DOMContentLoaded", function() {
-  const applyAndFilter = document.querySelector("#applyAndFilter");
+  const applyAndFilter = document.querySelector(".applyAndFilter");
   applyAndFilter.addEventListener("click", applyFilters);
   
   function applyFilters() {
@@ -238,6 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (!hasDisplayedItem) {
       containerImg.style.display = "block";
+      containerSelect.style.display = "none"
     } else {
       containerImg.style.display = "none";
     }
@@ -263,6 +269,7 @@ returnPhrases.addEventListener("click", () => {
   containerImg.style.display = "none";
   containerSearchFilter.style.display = "none"
   backSentences.style.display = "none"
+  containerSelect.style.display = "none"
   searchInput.value = ""
   closeFilter()
   listPhrases()
@@ -364,74 +371,252 @@ async function deletePhrase({ id }) {
     });
   }
 
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-
-prevButton.addEventListener('click', showPrevPhrases);
-nextButton.addEventListener('click', showNextPhrases);
-
-function showPrevPhrases() {
-  const phrasesList = document.getElementById('phrasesStayHere');
-  const listItems = phrasesList.querySelectorAll('.paragraph');
+  const prevButton = document.querySelector('.prev-button');
+  const nextButton = document.querySelector('.next-button');
   
-  listItems.forEach((item) => {
-    if (item.style.display !== 'none') {
-      item.style.display = 'none';
-      return;
-    }
+  prevButton.addEventListener('click', showPrevPhrases);
+  nextButton.addEventListener('click', showNextPhrases);
+  
+  function showNextPhrases() {
+    const phrasesList = document.getElementById('phrasesStayHere');
+    const listItems = phrasesList.querySelectorAll('.paragraph');
+    prevButton.style.display = "flex"
+
     
-    if (item.previousElementSibling) {
-      item.previousElementSibling.style.display = 'flex';
-    }
-  });
-
-}
-
-function showNextPhrases() {
-  const phrasesList = document.getElementById('phrasesStayHere');
-  const listItems = phrasesList.querySelectorAll('.paragraph');
-  
-  let displayedItemFound = false;
-  listItems.forEach((item) => {
-    if (displayedItemFound) {
-      item.style.display = 'none';
-      return;
-    }
+    let startSlide = -1;
+    let countPhrasesSlide = 0;
+    let isNonePhrases = false;
     
-    if (item.style.display !== 'none') {
-      displayedItemFound = true;
-      item.style.display = 'none';
+    for (let i = 0; i < listItems.length; i++) {
+      if (listItems[i].style.display === 'flex') {
+        startSlide = i + 1;
+        countPhrasesSlide--;
+        console.log(listItems[i])
+        listItems[i].style.display = 'none';
+        isNonePhrases = false
+      }
     }
-  });
-  
-  if (!displayedItemFound) {
-    listItems[0].style.display = 'flex';
+    if (select.value === "pagThree"){
+      for (let i = startSlide; i < startSlide + 3 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide--;
+          isNonePhrases = true
+        }
+      }
+    }
+
+  if (select.value === "pagFive"){
+    for (let i = startSlide; i < startSlide + 5 && i < listItems.length; i++) {
+      if (listItems[i]) {
+        listItems[i].style.display = 'flex';
+        countPhrasesSlide--;
+        isNonePhrases = true
+      }
+    }
   }
+  if(select.value === "pagTen"){
+    for (let i = startSlide; i < startSlide + 10 && i < listItems.length; i++) {
+      if (listItems[i]) {
+        listItems[i].style.display = 'flex';
+        countPhrasesSlide--;
+        isNonePhrases = true
+      }
+    }
+  }
+  if(select.value === "pagFifteen"){
+    for (let i = startSlide; i < startSlide + 15 && i < listItems.length; i++) {
+      if (listItems[i]) {
+        listItems[i].style.display = 'flex';
 
-listPhrases(); 
-}
+        countPhrasesSlide--;
+        isNonePhrases = true
+      }
+    }
+  }
+  if(select.value === "pagTwenty"){
+    for (let i = startSlide; i < startSlide + 20 && i < listItems.length; i++) {
+      if (listItems[i]) {
+        listItems[i].style.display = 'flex';
 
-  const select = document.querySelector("select")
+        countPhrasesSlide--;
+        isNonePhrases = true
+      }
+    }
+  }
+    if (countPhrasesSlide === 0 && listItems.length > 0) {
+      listItems[0].style.display = 'flex';
+    }
+    if (!isNonePhrases) {
+      nextButton.style.display = "none";
+    } else{
+      nextButton.style.display = "block";
+    } 
+  }
+  
+  function showPrevPhrases() {
+    const phrasesList = document.getElementById('phrasesStayHere');
+    const listItems = phrasesList.querySelectorAll('.paragraph');
+    const select = document.querySelector("select");
+    nextButton.style.display = "flex"
+  
+    let startSlide = -1;
+    let countPhrasesSlide = 0;
+    let isNonePhrases = false;
+  
+    for (let i = 0; i < listItems.length; i++) {
+      if (listItems[i].style.display === 'flex') {
+        startSlide = i + 1;
+        countPhrasesSlide++;
+        console.log(listItems[i])
+        listItems[i].style.display = 'none';
+        isNonePhrases = false;
+      }
+    }
+  
+    if (select.value === "pagThree") {
+      for (let i = startSlide; i < startSlide + 3 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide++;
+          isNonePhrases = true;
+        }
+      }
+    }
+    if (select.value === "pagFive") {
+      for (let i = startSlide; i < startSlide + 5 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide++;
+          isNonePhrases = true;
+        }
+      }
+    } else if (select.value === "pagTen") {
+      for (let i = startSlide; i < startSlide + 10 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide++;
+          isNonePhrases = true;
 
+        }
+      }
+    } else if (select.value === "pagFifteen") {
+      for (let i = startSlide; i < startSlide + 15 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide++;
+          isNonePhrases = true;
+
+        }
+      }
+    }
+    else if (select.value === "pagTwenty") {
+      for (let i = startSlide; i < startSlide + 20 && i < listItems.length; i++) {
+        if (listItems[i]) {
+          listItems[i].style.display = 'flex';
+          countPhrasesSlide++;
+          isNonePhrases = true;
+
+        }
+      }
+    }
+  
+    if (countPhrasesSlide === 0 && listItems.length > 0) {
+      listItems[0].style.display = 'flex';
+    }
+    if (!isNonePhrases) {
+      prevButton.style.display = "none";
+    } else{
+      prevButton.style.display = "block";
+    } 
+  }
+  
+  
+  const select = document.querySelector("select");
+  
   select.addEventListener("change", () => {
     const listItems = document.querySelectorAll(".paragraph");
-  
+
+    
     for (let index = 0; index < listItems.length; index++) {
-      if (select.value === "pagFive" && index < 5) {
-        listItems[index].style.display = "flex";
-      }
-        else if (select.value === "pagTen" && index < 10) {
+      if (select.value === "pagThree" && index < 3) {
         listItems[index].style.display = "flex";
       } 
-        else if (select.value === "pagFifteen" && index < 15) {
-        listItems[index].style.display = "flex";      
-      }
-        else {
+      else if(select.value === "pagFive" && index < 5) {
+        listItems[index].style.display = "flex";
+      } 
+      else if (select.value === "pagTen" && index < 10) {
+        listItems[index].style.display = "flex";
+      } 
+      else if (select.value === "pagFifteen" && index < 15) {
+        listItems[index].style.display = "flex";
+      } 
+      else if (select.value === "pagTwenty" && index < 20) {
+        listItems[index].style.display = "flex";
+      } 
+      else {
         listItems[index].style.display = "none";
       }
     }
   });
+
+  // theme dark mode
+const body = document.querySelector("body");
+const header = document.querySelector("header")
+const button = document.querySelector("button")
+const toggle = document.querySelector(".toggle");
+const practiceBtn = document.querySelector("#practice-btn")
+
+const getTheme = localStorage.getItem("theme");
+
+if (getTheme === "dark") {
+  body.classList.add("dark");
+  header.classList.add("dark")
+  button.classList.add("dark")
+  select.classList.add("dark")
+  prevButton.classList.add("dark")
+  nextButton.classList.add("dark")
+  returnPhrases.classList.add("dark")
+
+
+  toggle.classList.add("active");
+  toggle.innerHTML = `<i class="fas fa-moon"></i>`
+  openFilter()
+}else{
+  toggle.innerHTML = `<i class="fas fa-sun"></i>`
+}
+
+toggle.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  header.classList.toggle("dark")
+  button.classList.toggle("dark")
+  select.classList.toggle("dark")
+  prevButton.classList.toggle("dark")
+  nextButton.classList.toggle("dark")
+  returnPhrases.classList.toggle("dark")
   
+  
+
+  toggle.classList.toggle("active");
+  
+  if (body.classList.contains("dark") 
+      && header.classList.contains("dark") 
+      && button.classList.contains("dark")
+      && prevButton.classList.contains("dark")
+      && nextButton.classList.contains("dark")
+      && returnPhrases.classList.contains("dark")
+      && select.classList.contains("dark")
+
+   
+      ) {
+    localStorage.setItem("theme", "dark");
+    toggle.innerHTML = `<i class="fas fa-moon"></i>`
+  }
+  else {
+    localStorage.setItem("theme", "light");
+    toggle.innerHTML = `<i class="fas fa-sun"></i>`
+  }
+});
 
 
 listPhrases(); 
