@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="../phrases/style.global.css">
   <link rel="stylesheet" href="../header/navbar.css">
   <link rel="stylesheet" href="../modal/modal.css">
+  <link rel="stylesheet" href="../assets/img.css">
 
   <link rel="stylesheet" 
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
   integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <script src="../header/script.js" defer></script>
   <script src="../http/client.js" defer></script>
   <script src="script.js" defer></script>
 
@@ -26,7 +26,7 @@
   <header class="navbar-header">
     <h2>
       <a class="menu__item" href="../phrases/index.html">
-        frase em ingles    
+        Study Phrases  
       </a>
     </h2>
     <div class="navbar-toggle" id="navbar-toggle">
@@ -80,15 +80,17 @@
   <div class="container-search-filter">
     <div class="input-wrapper">
       <label 
-        for="filter" 
+        for="filter-search" 
         class="sr-only">
         Pesquisar
       </label>
       <input 
+        for="filter"
         id="filter-input" 
         type="text" 
         placeholder="Filter"
       >   
+      <i id="filter-search" class="fa-solid fa-magnifying-glass"></i>
   </div>
 
     <div id="container-radio">
@@ -131,13 +133,12 @@
     </div>
   </div>
   <button 
-    id="applyAndFilter" 
-    onclick="closeModalApply()">
+    id="applyAndFilter">
     Aplicar
   </button>
 
   <!-- listar frases -->
-  <div id="phrasesStayHere"></div>
+  <ul id="phrasesStayHere"></ul>
 
   <h3 class="phrases-vazia"></h3>
 
@@ -162,8 +163,6 @@
     </div>
   </div> 
 <div>
-
-
 
   <div class="modal-background"></div>
   
@@ -227,6 +226,23 @@
     </button>
     </div>
     </div>
+  </div>
+  <div id="containerImg">
+    <strong>nenhuma frase encontrada.</strong>
+    <img src="../assets/search.webp" alt="IMAGEM FILTER">
+  </div>
+  <div>
+    <button id="returnPhrases"  class="back-sentences">voltar frases</button>
+  </div>
+  <div class="container-selection">
+    <button class="next-button"><</button>
+    <select>
+      <option></option>
+      <option value="pagFive">pagina / 5</option>
+      <option value="pagTen">pagina / 10</option>
+      <option value="pagFifteen">pagina / 15</option>
+    </select>
+    <button class="prev-button">></button>
   </div>
   
   <script 
