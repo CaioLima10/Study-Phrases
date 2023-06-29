@@ -4,9 +4,6 @@
     --ternary:#1F123D; 
 }
 
-body{
-  background: var(--ternary);
-}
 
 .title-header{
   display: flex;
