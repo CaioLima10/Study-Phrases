@@ -38,6 +38,7 @@ form {
 }
 
 .titleRegister {
+  color: #fff;
   width: 700px;
   display: flex;
   font-size: 20px;
@@ -51,13 +52,14 @@ form {
 .textarea {
   height: 150px;
   width: 670px;
-  border: solid 2px black;
   resize: none;
   background-color: #fff;
   padding: 15px;
   font-size: 20px;
   margin-bottom: 20px;
+  border: none;
 }
+
 
 a{
   display: flex;
@@ -71,12 +73,14 @@ a{
 span{
   font-weight: 600;
 }
-
+#menu__link{
+  font-size: 26px;
+}
 .label{
   display: flex;
-   font-size: 20px;
-   margin:6px;
-   color: #fff;
+  font-size: 20px;
+  margin:6px;
+  color: #fff;
 }
 .swal2-timer-progress-bar {
   padding: 2px;
@@ -88,7 +92,6 @@ span{
 }
 
 .my-custom-title-class{
-
   font-size: 26px;
   color: #000;
 }
