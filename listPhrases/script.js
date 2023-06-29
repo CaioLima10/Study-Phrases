@@ -2,8 +2,8 @@
 // função de filtra 
 const filterOpen = document.querySelector("#open-filter");
 const filterClose = document.querySelector("#close-filter")
-const filterInput = document.querySelector("#filter-input")
 const containerSearchFilter = document.querySelector(".container-search-filter");
+const radioInformation = document.querySelector("#radioInformation")
 const iconOpenFilter = document.querySelector(".fa-filter")
 const iconCloseFiltered = document.querySelector("#close-filter")
 
@@ -118,7 +118,6 @@ function createItem(item) {
   return ul;
 }
 
-
 async function listPhrases() {
   const phrasesList = document.getElementById("phrasesStayHere");
   
@@ -150,41 +149,124 @@ function showMenu(selectedPhrase ){
   })
 }
 
+const backSentences = document.querySelector(".back-sentences")
 
+document.addEventListener("DOMContentLoaded", function() {
+  const applyAndFilter = document.querySelector("#applyAndFilter");
+  applyAndFilter.addEventListener("click", applyFilters);
+  
+  function applyFilters() {
+    const searchInput = document.querySelector("#filter-input");
+    const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
+    
+    if (searchInput.value && priorityInputs.length > 0) {
+      filterInput();
+      filterPriority();
+      checkEmptyResults();
+      backSentences.style.display = "block"
+    }
+  }
 
-document.querySelector("#filter-input").addEventListener("input", 
-filterListPhrases);
+  function checkEmptyResults() {
+    const listItems = document.querySelectorAll(".paragraph");
+    const containerImg = document.querySelector("#containerImg");
 
-document.querySelector("#filter-input").addEventListener("input", filterListPhrases);
+    let hasDisplayedItem = false;
 
-function filterListPhrases() {
-  const searchInput = document.querySelector("#filter-input");
+    listItems.forEach((item) => {
+      if (item.style.display !== "none") {
+        hasDisplayedItem = true;
+      }
+    });
+
+    if (!hasDisplayedItem) {
+      containerImg.style.display = "block";
+    } else {
+      containerImg.style.display = "none";
+    }
+  }
+
+  function filterInput() {
+    const searchInput = document.querySelector("#filter-input");
+    const listItems = document.querySelectorAll(".paragraph");
+    const containerImg = document.querySelector("#containerImg");
+
+    const filter = searchInput.value.toLowerCase();
+    let hasDisplayedItem = false;
+
+    listItems.forEach((item) => {
+      const text = item.querySelector(".phrases").textContent.toLowerCase();
+
+      if (text.includes(filter)) {
+        item.style.display = "";
+        hasDisplayedItem = true;
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    if (!hasDisplayedItem) {
+      containerImg.style.display = "block";
+    } else {
+      containerImg.style.display = "none";
+    }
+
+  }
+
+  function filterPriority() {
+    const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
+    const searchInput = document.querySelector("#filter-input");
+    const listItems = document.querySelectorAll(".paragraph");
+    const containerImg = document.querySelector("#containerImg");
+
+    const filter = searchInput.value.toLowerCase();
+    let hasDisplayedItem = false;
+
+    listItems.forEach((item) => {
+      const text = item.querySelector(".phrases").textContent.toLowerCase();
+      const priorityChecked = item.querySelector(".border-color-phrases");
+
+      priorityInputs.forEach((input) => {
+        if (priorityChecked.classList.contains(`is-${input.value}`) && text.includes(filter)) {
+          item.style.display = "";
+          hasDisplayedItem = true;
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+
+    if (!hasDisplayedItem) {
+      containerImg.style.display = "block";
+    } else {
+      containerImg.style.display = "none";
+    }
+  }
+});
+
+const returnPhrases = document.querySelector('#returnPhrases');
+
+returnPhrases.addEventListener("click", () => {
+  const priorityInputs = document.querySelectorAll('input[name="priority"]');
   const listItems = document.querySelectorAll(".paragraph");
-
-  const checkedInput = document.querySelector('input[name="priority"]:checked');
-  const checkedValue = checkedInput ? checkedInput.value : "all";
-
-  const filter = searchInput.value.toLowerCase();
+  const searchInput = document.querySelector("#filter-input");
+  const containerImg = document.querySelector("#containerImg");
 
   listItems.forEach((item) => {
-    const text = item.querySelector(".phrases").textContent.toLowerCase();
-    const computedStyle = window.getComputedStyle(item.querySelector(".border-color-phrases"));
-    const priority = computedStyle.getPropertyValue("background-color");
+    item.style.display = "block";
+  });
 
-    console.log(item.priority)
+  priorityInputs.forEach((input) => {
+    input.checked = false;
+  });
 
-    const isChecked = checkedValue === "all" || priority.includes(checkedValue);
-    
-    console.log(checkedValue)
-
-    if (text.includes(filter) && isChecked) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
-  })
-}
-
+  containerImg.style.display = "none";
+  containerSearchFilter.style.display = "none"
+  backSentences.style.display = "none"
+  searchInput.value = ""
+  closeFilter()
+  listPhrases()
+});
 
 async function editPhrase({ id }) {
   modalEdit.classList.add("active-edit");
@@ -197,8 +279,6 @@ async function editPhrase({ id }) {
       const newPhrase = inputEdit.value 
       const newInputChecked = document.querySelector('input[name="prioridade"]:checked').value;
 
-
-      
       if(!newPhrase || !newInputChecked){
         alert("para editar precisa prencher todos os campos")
         return
@@ -224,7 +304,6 @@ async function editPhrase({ id }) {
       modalBackgroundBody.style.display = "none"
       editBtnConfirm.removeEventListener("click", confirmEdit);
       modalEdit.classList.remove("active-edit");
-
 
       listPhrases();
     }
@@ -284,5 +363,75 @@ async function deletePhrase({ id }) {
       }
     });
   }
+
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+
+prevButton.addEventListener('click', showPrevPhrases);
+nextButton.addEventListener('click', showNextPhrases);
+
+function showPrevPhrases() {
+  const phrasesList = document.getElementById('phrasesStayHere');
+  const listItems = phrasesList.querySelectorAll('.paragraph');
+  
+  listItems.forEach((item) => {
+    if (item.style.display !== 'none') {
+      item.style.display = 'none';
+      return;
+    }
+    
+    if (item.previousElementSibling) {
+      item.previousElementSibling.style.display = 'flex';
+    }
+  });
+
+}
+
+function showNextPhrases() {
+  const phrasesList = document.getElementById('phrasesStayHere');
+  const listItems = phrasesList.querySelectorAll('.paragraph');
+  
+  let displayedItemFound = false;
+  listItems.forEach((item) => {
+    if (displayedItemFound) {
+      item.style.display = 'none';
+      return;
+    }
+    
+    if (item.style.display !== 'none') {
+      displayedItemFound = true;
+      item.style.display = 'none';
+    }
+  });
+  
+  if (!displayedItemFound) {
+    listItems[0].style.display = 'flex';
+  }
+
+listPhrases(); 
+}
+
+  const select = document.querySelector("select")
+
+  select.addEventListener("change", () => {
+    const listItems = document.querySelectorAll(".paragraph");
+  
+    for (let index = 0; index < listItems.length; index++) {
+      if (select.value === "pagFive" && index < 5) {
+        listItems[index].style.display = "flex";
+      }
+        else if (select.value === "pagTen" && index < 10) {
+        listItems[index].style.display = "flex";
+      } 
+        else if (select.value === "pagFifteen" && index < 15) {
+        listItems[index].style.display = "flex";      
+      }
+        else {
+        listItems[index].style.display = "none";
+      }
+    }
+  });
+  
+
 
 listPhrases(); 
