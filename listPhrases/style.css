@@ -1,10 +1,8 @@
-
-
-.title{
+.title {
   color: #fff;
 }
 
-.font-lilac{
+.font-lilac {
   color: #AA9CFF !important;
 }
 
@@ -17,16 +15,15 @@
   margin-left: -10px;
 }
 
-
-.border-color-phrases.is-low{
+.border-color-phrases.is-low {
   background-color: #45c4b0;
 }
 
-.border-color-phrases.is-medium{
+.border-color-phrases.is-medium {
   background-color: #bdb160;
 }
 
-.border-color-phrases.is-high{
+.border-color-phrases.is-high {
   background-color: #d04a4a;
 }
 
@@ -34,20 +31,8 @@
   width: 680px;
 }
 
-.btnDeleteEditByPhrase{
-  background: none;
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.btnDeleteEditByPhrase:hover{
-  background-color: rgba(0, 0, 0, 0.160);
-  border-bottom: 1px solid #00000072;
-
-}
-.fa-circle-minus , .fa-chart-column{
+.fa-circle-minus,
+.fa-chart-column {
   font-family: sans-serif;
   width: 20px;
   cursor: pointer;
@@ -70,7 +55,6 @@
   display: none;
 }
 
-
 .container-search-filter {
   display: none;
 }
@@ -81,7 +65,7 @@
 
 #filter-input {
   width: 635px;
-  padding: 1rem 2rem ;
+  padding: 1rem 2rem;
   border-radius: 2px;
   background-color: #fff;
   border: 0;
@@ -97,7 +81,7 @@
   word-break: break-word;
 }
 
-.fa-magnifying-glass{
+.fa-magnifying-glass {
   display: flex;
   font-size: 22px;
   background-color: #fff;
@@ -107,27 +91,26 @@ button.dark {
   background-color: #21262d;
 }
 
-
 .applyAndFilter {
   width: 700px;
   height: 50px;
   font-weight: 600;
   font-size: 22px;
   margin-bottom: 3rem;
+  cursor: pointer;
   background-color: #6e60bd;
   color: #fff;
   border: none;
   margin-top: 2rem;
 }
 
-.my-custom-text-class{
+.my-custom-text-class {
   color: #000;
 }
 
-.paragraph{
+.paragraph {
   margin-bottom: 20px;
 }
-
 
 span {
   width: 700px;
@@ -146,28 +129,33 @@ li {
   flex-wrap: wrap;
   list-style: none;
   width: 780px;
+  margin-left: 0.8rem;
   position: relative;
-
 }
 
 .phrases {
+  display: flex;
+
   color: #fff;
   display: flex;
-  width: 655px; 
+  text-align: center;
+  align-items: center;
+  margin-left: 2rem;
+  width: 650px;
   justify-content: space-between;
   word-break: break-word;
 }
 
-
-label{
+label {
   font-size: 20px;
   color: #fff;
 }
-h3{
+
+h3 {
   display: none;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   appearance: none;
   background-color: #fff;
   border: 2px solid #fff;
@@ -175,16 +163,20 @@ input[type="radio"]{
   border-radius: 50%;
   cursor: pointer;
 }
-input[type="radio"]:checked{
-  background: #6E60BD
+
+input[type="radio"]:checked {
+  background: #6E60BD;
 }
 
-
-.container-select{
+.container-select {
   display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start
 }
 
-select{
+select {
   display: flex;
   height: 50px;
   padding: 0px 30px;
@@ -193,30 +185,33 @@ select{
   border: none;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem ;
+  margin-top: 3rem;
   margin-bottom: 13rem;
   appearance: none;
   cursor: pointer;
   font-size: 22px;
   font-weight: 900;
 }
-option{
+
+option {
   background-color: #fff;
   color: #000;
 }
 
-.prev-button{
-  margin-top: 3rem ;
+.prev-button {
+  margin-top: 3rem;
   margin-left: 10px;
   padding: 0px 10px;
 }
-.next-button{
-  margin-top: 3rem ;
+
+.next-button {
+  margin-top: 3rem;
   margin-right: 10px;
   padding: 0px 10px;
 }
-.prev-button, 
-.next-button{
+
+.prev-button,
+.next-button {
   display: flex;
   height: 50px;
   font-size: 32px;
@@ -227,197 +222,233 @@ option{
   color: #fff;
 }
 
-
-
-@media screen and (max-width: 800px) {
-
-  span{
+@media screen and (max-width: 810px) {
+  span {
     width: 510px;
   }
-  #filter-input{
-    width: 460px;
+  .title{
+    width: 510px;
   }
-  .applyAndFilter{
+  #filter-input {
+    width: 440px;
+  }
+  ul , li{
+    width: 570px;
+  }
+  .applyAndFilter {
     width: 510px;
   }
   #search-input {
     width: 460px;
   }
-
-  .phrases{
-   width: 440px;
+  .phrases {
+    width: 440px;
+  }
+  #returnPhrases {
+    width: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-
-@media screen and (max-width: 690px) {
-
-  span{
-    width: 470px;
-  }
-  #filter-input{
-    width: 420px;
-    font-size: 20px;
-  }
-  .title{
-    font-size: 26px;
-    width: 470px;
-  }
-  .applyAndFilter{
-    width: 470px;
-  }
-  #search-input {
-    width: 400px;
-  }
-  .phrases{
+@media screen and (max-width: 640px) {
+  span {
     width: 390px;
-   }
-}
-
-@media screen and (max-width: 590px) {
-
-  span{
-    width: 410px;
-  }
-  #filter-input{
-    width: 360px;
   }
   .title{
-    font-size: 24px;
-    width: 420px;
+    width: 400px;
+    font-size: 26px;
   }
-  #applyAndFilter{
-    width: 420px;
+  #filter-input {
+    width: 320px;
+    height: 20px;
   }
+  .input-wrapper i {
+    bottom: 14px;
+  }
+  .applyAndFilter {
+    width: 390px;
+  }
+
   #search-input {
-    width: 350px;
+    width: 260px;
   }
-  .phrases{
-    width: 330px;
-   }
+  ul , li{
+    width: 500px;
+  }
+  .phrases {
+    width: 340px;
+  }
+  #returnPhrases {
+    width: 260px;
+  }
+  select{
+    height: 35px;
+    font-size: 20px;
+    padding: 0px 20px;
+  }
+  .prev-button , .next-button{
+    height: 35px;
+    font-size: 22px;
+  } 
 }
 
-@media screen and (max-width: 516px) {
-
-  span{
-    width: 370px;
-  }
-  #filter-input{
-    width: 320px;
-    font-size: 20px;
+@media screen and (max-width: 550px) {
+  span {
+    width: 260px;
   }
   .title{
     width: 380px;
   }
-  .applyAndFilter{
-    width: 370px;
+  #filter-input {
+    width: 270px;
+    font-size: 18px;
+  }
+  input[type="radio"]:checked {
+    font-size: 18px;
+  }
+  label{
+    font-size: 18px;
+  }
+  .filter{
+    width: 340px;
+  }
+  .applyAndFilter {
+    width: 340px;
   }
   #search-input {
+    width: 270px;
+  }
+  ul , li{
     width: 400px;
   }
-  .phrases{
-    width: 300px;
-   }
-   .btnDeleteEditByPhrase {
-    font-size: 14px;
-   }
-
-}
-@media screen and (max-width: 480px) {
-.task-menu {
-  left: 9rem;
-  width: 120px;
-}
-.btnDeleteEditByPhrase {
-  font-size: 11px;
- }
-}
-@media screen and (max-width: 420px) {
-
-  span{
-    width: 320px;
-  }
-  #filter-input{
-    width: 260px;
-    font-size: 18px;
-  }
-  .title{
-    width: 320px;
-  }
-  .applyAndFilter{
-    width: 320px;
-  }
-  #search-input {
-    width: 300px;
-  }
-  .phrases{
-   width: 240px;
-  }
-  .task-menu {
-    left: 5rem;
-    width: 120px;
-  }
-  .btnDeleteEditByPhrase {
-    font-size: 11px;
-   }
-}
-
-@media screen and (max-width: 350px) {
-
-  span{
+  .phrases {
     width: 280px;
   }
-  #filter-input{
-    width: 220px;
-    font-size: 18px;
+  #returnPhrases {
+    display: none;
+    width: 150px;
   }
-  .title{
-    width: 280px;
-  }
-  .applyAndFilter{
-    width: 280px;
-  }
-  #search-input {
-    width: 260px;
-  }
-  .phrases{
-   width: 200px;
-  }
-  .task-menu {
-    left: 2rem;
-    width: 120px;
-  }
-  .btnDeleteEditByPhrase {
-    font-size: 11px;
-   }
 }
 
-@media screen and (max-width: 330px) {
-
-  span{
-    width: 260px;
-  }
-  #filter-input{
+@media screen and (max-width: 465px) {
+  span {
     width: 200px;
-    font-size: 18px;
   }
   .title{
-    width: 260px;
+    width: 320px;
   }
-  .applyAndFilter{
-    width: 260px;
+  #filter-input {
+    width: 250px;
+  }
+  .filter{
+    width: 320px;
+  }
+  .applyAndFilter {
+    width: 320px;
   }
   #search-input {
-    width: 240px;
+    width: 270px;
   }
-  .phrases{
-   width: 180px;
+  ul , li{
+    width: 370px;
   }
-  .task-menu {
-    left: 1rem;
-    width: 120px;
+  .phrases {
+    width: 258px;
+    font-size: 16px;
   }
-  .btnDeleteEditByPhrase {
-    font-size: 11px;
-   }
+  select{
+    height: 30px;
+    font-size: 18px;
+    padding: 0px 10px;
+  }
+  .prev-button , .next-button{
+    height: 30px;
+    font-size: 18px;
+  } 
+  #returnPhrases {
+    display: none;
+    width: 150px;
+  }
+  @media screen and (max-width: 425px) {
+    span {
+      width: 200px;
+    }
+    .title{
+      width: 290px;
+    }
+    #filter-input {
+      width: 230px;
+    }
+    .filter{
+      width: 300px;
+    }
+    .applyAndFilter {
+      width: 300px;
+    }
+    #search-input {
+      width: 270px;
+    }
+    ul , li{
+      width: 345px;
+    }
+    .phrases {
+      width: 218px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    select{
+      height: 30px;
+      font-size: 18px;
+      padding: 0px 10px;
+    }
+    .prev-button , .next-button{
+      height: 30px;
+      font-size: 18px;
+    } 
+    #returnPhrases {
+      display: none;
+      width: 150px;
+    }
+}
+
+@media screen and (max-width: 398px) {
+  span {
+    width: 200px;
+  }
+  .title{
+    width: 270px;
+  }
+  #filter-input {
+    width: 200px;
+  }
+  .filter{
+    width: 270px;
+  }
+  .applyAndFilter {
+    width: 270px;
+  }
+  ul , li{
+    width: 320px;
+  }
+  .phrases {
+    width: 198px;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  select{
+    height: 30px;
+    font-size: 18px;
+    padding: 0px 10px;
+  }
+  .prev-button , .next-button{
+    height: 30px;
+    font-size: 18px;
+  } 
+  #returnPhrases {
+    display: none;
+    width: 150px;
+  }
+}
 }

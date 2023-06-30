@@ -15,14 +15,43 @@
   display: flex;
 }
 
+.btnDeleteByPhrase{
+  display: flex;
+  align-items: baseline;
+  margin-right: -0px;
+  margin-left: -22px;
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+.btnEditByPhrase{
+  display: flex;
+  align-items: baseline;
+  margin-right: -0px;
+  margin-left: -65px;
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+
+.btnDeleteByPhrase:hover,
+.btnEditByPhrase:hover{
+  background-color: rgba(0, 0, 0, 0.160);
+  border-bottom: 1px solid #00000072;
+  cursor: pointer;
+}
+
 .task-menu {
   position: absolute;
   background: #fff;
   padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.144);
   width: 160px;
   top: 2.5rem;
-  right: 5rem;
+  right: 6rem;
   height: 95px;
   transform: scale(0);
   transform-origin: top right;
@@ -63,7 +92,7 @@
   border-bottom: 2px solid #000;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 810px) {
   .task-menu {
     width: 120px;
     height: 75px;
@@ -78,17 +107,38 @@
   #changeOwner {
     font-size: 12px;
   }
+
+  .btnDeleteByPhrase,
+  .btnEditByPhrase{
+    font-size: 12px;
+    margin-right: -0px;
+  }
+  .btnEditByPhrase{
+    margin-left: -55px;  
+  }
+
 }
+
 @media screen and (max-width: 780px) {
     .settings {
       max-width: 480px;
     }
+
+    .btnDeleteByPhrase,
+    .btnEditByPhrase{
+      font-size: 12px;
+      margin-right: -0px;
+    }
+    .btnEditByPhrase{
+      margin-left: -55px;  
+    }
 }
+
 @media screen and (max-width: 480px) {
   .task-menu {
     width: 100px;
     height: 65px;
-    right: 0;
+    right: 5rem;
   }
 
   #showModal {
@@ -100,7 +150,15 @@
   #changeOwner {
     font-size: 10px;
   }
-  
+
+  .btnDeleteByPhrase,
+  .btnEditByPhrase{
+    font-size: 12px;
+    margin-right: -0px;
+  }
+  .btnEditByPhrase{
+    margin-left: -55px;  
+  }
 }
 
 @media screen and (max-width: 370px) {
@@ -111,6 +169,15 @@
 
   .task-menu {
     right: 0;
+  }
+
+  .btnDeleteByPhrase,
+  .btnEditByPhrase{
+    font-size: 12px;
+    margin-right: -0px;
+  }
+  .btnEditByPhrase{
+    margin-left: -55px;  
   }
 }
 /* modal de delete */
@@ -215,12 +282,6 @@
   }
 }
 
-
-
-
-
-/* Resto do seu código... */
-
 .container-modal-edit {
   width: 550px;
   height: 400px;
@@ -231,9 +292,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin:100px auto;
   z-index: 999;
-  margin: 100px auto;
+  margin: 30px auto;
 }
 
 .modal-edit{
