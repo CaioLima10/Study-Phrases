@@ -38,23 +38,24 @@
   </header>
 
   <nav class="navbar" id="navbar">
-    <ul class="navbar-menu" id="navbar-menu">
+    <div class="navbar-menu" id="navbar-menu">
       <i class="fas fa-times"></i>
-    <div class="container-links">
       <span class="container-item-links">
-        <a id="menu__links"  class="menu__item" href="../phrases/index.html">
-          Criar Frases
-        </a>
-      </span >
-      <span class="container-item-links">
-        <a id="menu__links" class="menu__item" href="/spacePractice/index.html">
-          Estudar
-        </a>
+        <div class="container-links">
+          <span class="container-item-links">
+            <a id="menu__links__two" class="menu__item" href="../phrases/index.html">
+              criar Frases
+            </a>
+          </span >
+          <span class="container-item-links">
+            <a id="menu__links__two" class="menu__item" href="/spacePractice/index.html">
+              Estudar
+            </a>
+          </span>
       </span>
     </div>  
-    </ul>
+    </div>
   </nav>
-  
   
   <h1 class="title titleRegister">Frases Cadastradas</h1>
 
@@ -140,7 +141,7 @@
   </button>
 
   <!-- listar frases -->
-  <ul id="phrasesStayHere"></ul>
+  <div id="phrasesStayHere"></div>
 
   <h3 class="phrases-vazia"></h3>
 
@@ -233,23 +234,55 @@
     </div>
     </div>
   </div>
+  
   <div id="containerImg">
-    <strong>nenhuma frase encontrada.</strong>
-    <img src="../assets/search.webp" alt="IMAGEM FILTER">
-  </div>
-  <div>
-    <button id="returnPhrases"  class="back-sentences">voltar frases</button>
+    <strong>
+      nenhuma frase encontrada.
+    </strong>
+    <img  
+    src="../assets/search.webp" 
+    alt="IMAGEM FILTER">
+
   </div>
   <div class="container-select">
-    <button  class="next-button"><</button>
+    <button  class="next-button"
+    ><
+    </button>
     <select>
-        <option value="pagThree" selected >Página / 3</option>
-        <option value="pagFive">Página / 5</option>
-        <option value="pagTen">Página / 10</option>
-        <option value="pagFifteen">Página / 15</option>
-        <option value="pagTwenty">Página / 20</option>
-    </select>
-    <button  class="prev-button">></button>
+        <option 
+          value="pagThree" 
+          selected >
+          Página / 3
+        </option>
+        <option 
+          value="pagFive">
+          Página / 5
+        </option>
+        <option 
+          value="pagTen">
+          Página / 10
+        </option>
+        <option 
+          value="pagFifteen">
+          Página / 15
+        </option>
+        <option 
+          value="pagTwenty">
+          Página / 20
+        </option>
+    </select>]
+
+    <button 
+      class="prev-button">
+      >
+    </button>
+  </div>
+  <div class="container-return">
+    <button 
+      id="returnPhrases"  
+      class="back-sentences">
+      voltar frases
+    </button>
   </div>
 
 
