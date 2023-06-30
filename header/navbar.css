@@ -1,29 +1,29 @@
-:root{
-    --primary: #241770;
-    --segundary: #ffffff;
-    --ternary:#1F123D; 
+:root {
+  --primary: #241770;
+  --segundary: #ffffff;
+  --ternary: #1F123D;
 }
 
-
-.title-header{
+.title-header {
   display: flex;
   color: var(--segundary);
 }
-h2{
+
+h2 {
   margin-left: 25px;
   font-size: 26px;
 }
 
-h2 > a{
+h2 > a {
   text-decoration: none;
   color: #fff;
 }
 
-h2 > a:hover{
+h2 > a:hover {
   color: #ffffffbd;
 }
 
-header{
+header {
   display: flex;
   justify-content: space-between;
 }
@@ -32,14 +32,14 @@ header{
   height: 25px;
   width: 100%;
   background-color: #241770;
-  position: relative; 
+  position: relative;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.70);
   z-index: 998;
 }
 
 .navbar-toggle {
   position: absolute;
-  right: 0; 
+  right: 0;
 }
 
 .navbar-header {
@@ -55,7 +55,7 @@ header{
   cursor: pointer;
 }
 
-.fa-times{
+.fa-times {
   display: flex;
   right: 0;
   top: 1.4rem;
@@ -66,37 +66,45 @@ header{
   color: #000;
 }
 
-.fa-times:hover{
+.fa-times:hover {
   transition: all 1s;
   color: #0000009c;
 }
 
-.fa-bars{
+.fa-bars {
   margin-top: 2px;
   font-size: 28px;
   margin-right: 30px;
   cursor: pointer;
 }
-.fa-bars:hover{
-  transition: all 1s;
-  color: #ffffffc0;
-}
 
-.container-links{
+.container-links {
   margin-top: 5rem;
   display: grid;
 }
 
-span{
+span {
   margin-bottom: 30px;
 }
-#menu__links{
+
+#menu__links {
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
   color: #000;
   font-size: 20px;
-  margin-right: 8rem;
+  margin-left: -0rem;
+  padding: 10px 0 10px 0;
+}
+
+#menu__links__two{
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  color: #000;
+  font-size: 20px;
+  margin-left: 3rem;
+  padding: 10px 0 10px 0;
 }
 
 .navbar {
@@ -116,10 +124,3 @@ span{
 .navbar.open {
   right: 0;
 }
-
-
-
-
-
-
-
