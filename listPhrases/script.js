@@ -97,13 +97,13 @@ function createItem(item) {
   const deletePhraseLi = document.createElement("li");
   deletePhraseLi.addEventListener("click", () => deletePhrase({ id: item.id }));
   deletePhraseLi.innerHTML = `
-    <button class="btnDeleteEditByPhrase"><i class="fa-solid fa-circle-minus"></i>Excluir frase</button>
+    <button class="btnDeleteByPhrase"><i class="fa-solid fa-circle-minus"></i>Excluir frase</button>
   `;
 
   const editPhraseLi = document.createElement("li");
   editPhraseLi.addEventListener("click", () => editPhrase({ id: item.id }));
   editPhraseLi.innerHTML = `
-    <button class="btnDeleteEditByPhrase"><i class="fa-solid fa-chart-column"></i>Editar</button>
+    <button class="btnEditByPhrase"><i class="fa-solid fa-chart-column"></i>Editar</button>
   `;
 
   taskMenuUl.appendChild(deletePhraseLi);
@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
   applyAndFilter.addEventListener("click", applyFilters);
   
   function applyFilters() {
+    const containerSelect = document.querySelector('.container-select');
     const searchInput = document.querySelector("#filter-input");
     const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
     
@@ -169,7 +170,10 @@ document.addEventListener("DOMContentLoaded", function() {
       filterPriority();
       checkEmptyResults();
       backSentences.style.display = "block"
+      containerSelect.style.display = "none"
+     
     }
+    
   }
 
   function checkEmptyResults() {
@@ -242,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (!hasDisplayedItem) {
-      containerImg.style.display = "block";
+      containerImg.style.display = "flex";
       containerSelect.style.display = "none"
     } else {
       containerImg.style.display = "none";
@@ -258,6 +262,7 @@ returnPhrases.addEventListener("click", () => {
   const searchInput = document.querySelector("#filter-input");
   const containerImg = document.querySelector("#containerImg");
 
+
   listItems.forEach((item) => {
     item.style.display = "block";
   });
@@ -268,8 +273,9 @@ returnPhrases.addEventListener("click", () => {
 
   containerImg.style.display = "none";
   containerSearchFilter.style.display = "none"
+  containerSelect.style.display = "flex"
   backSentences.style.display = "none"
-  containerSelect.style.display = "none"
+  
   searchInput.value = ""
   closeFilter()
   listPhrases()
