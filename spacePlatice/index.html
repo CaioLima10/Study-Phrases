@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vamos praticar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header/navbar.css">
+    <link rel="stylesheet" href="../phrases/style.global.css">
+
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="../http/client.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+
+  <div class="modal-background"></div>
+
+  <header class="navbar-header">
+    <h2>
+      <a id="menu__link" class="menu__item" href="../phrases/index.html">
+        Study Phrases
+      </a>
+    </h2>
+    <div class="toggle"></div>
+    <div class="navbar-toggle" id="navbar-toggle">
+      <span class="open-icon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </div>
+  </header>
+
+  <nav class="navbar" id="navbar">
+    <ul class="navbar-menu" id="navbar-menu">
+      <i class="fas fa-times"></i>
+      <span class="container-item-links">
+        <div class="container-links">
+          <span id="container-item-links">
+            <a id="menu__links" class="menu__item" href="../phrases/index.html">
+              Voltar pra Home
+            </a>
+          </span >
+          <span class="container-item-links">
+            <a id="menu__links" class="menu__item" href="../listPhrases/index.html">
+              Listar Frases
+            </a>
+          </span>
+      </span>
+    </div>  
+    </ul>
+  </nav>
+
+
+    <h1 class="title">Vamos praticar um pouco!</h1>
+    <p class="paragraph">
+      <span class="blackText">"Frases aleatórias" ex:</span>
+      <div class="purpleText"></div></p>
+
+    <p class="repeatPhrase">Repita cada frase 10 vezes</p>
+
+
+    <div id="phrasesStayHere"></div>
+ 
+    <button  onclick="loadingRandom()"  id="btnRandomPhrases" class="otherPhrases">
+    Quero Praticar!
+    </button>
+
+    <button class="linkHomePhrases">
+      <a class="aLink" href="../phrases/index.html">Voltar para Home</a>
+    </button>
+  </body>
+</html>
