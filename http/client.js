@@ -1,7 +1,7 @@
 const client = ({
-   body = null, path = '', method = 'GET'
+  body = null, path = '', method = 'GET'
 }) => {
-  const baseURL = 'http://localhost:3001';
+  const baseURL = 'http://localhost:3000';
 
   return new Promise((resolve, reject) => {
     fetch(`${baseURL}/${path}`, {
@@ -42,4 +42,9 @@ async function updatePhrase({ id }) {
 async function deletePhrase( { id } ) {
   const path = `phrase/${ id }`
   await client({ method: 'DELETE' , path })
+}
+
+async function phrasesMotivation(){
+  return await client({ method: 'GET' , path: 'motivationPhrases' }) 
+
 }
