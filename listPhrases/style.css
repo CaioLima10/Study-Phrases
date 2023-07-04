@@ -1,7 +1,3 @@
-.title {
-  color: #fff;
-}
-
 .font-lilac {
   color: #AA9CFF !important;
 }
@@ -26,8 +22,8 @@
 .border-color-phrases.is-high {
   background-color: #d04a4a;
 }
-
 .title {
+  color: #fff;
   width: 680px;
 }
 
@@ -104,6 +100,15 @@ button.dark {
   margin-top: 2rem;
 }
 
+#btn-practice > a{
+  text-decoration: none;
+  color: #fff;
+}
+
+#btn-practice.dark{
+  background-color: #21262d;
+}
+
 .my-custom-text-class {
   color: #000;
 }
@@ -135,7 +140,6 @@ li {
 
 .phrases {
   display: flex;
-
   color: #fff;
   display: flex;
   text-align: center;
@@ -235,7 +239,7 @@ option {
   ul , li{
     width: 570px;
   }
-  .applyAndFilter {
+  .applyAndFilter , #btn-practice  {
     width: 510px;
   }
   #search-input {
@@ -246,9 +250,7 @@ option {
   }
   #returnPhrases {
     width: 460px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
   }
 }
 
@@ -267,7 +269,7 @@ option {
   .input-wrapper i {
     bottom: 14px;
   }
-  .applyAndFilter {
+  .applyAndFilter , #btn-practice {
     width: 390px;
   }
 
@@ -282,6 +284,7 @@ option {
   }
   #returnPhrases {
     width: 260px;
+    display: none;
   }
   select{
     height: 35px;
@@ -314,7 +317,7 @@ option {
   .filter{
     width: 340px;
   }
-  .applyAndFilter {
+  .applyAndFilter , #btn-practice  {
     width: 340px;
   }
   #search-input {
@@ -345,7 +348,7 @@ option {
   .filter{
     width: 320px;
   }
-  .applyAndFilter {
+  .applyAndFilter , #btn-practice {
     width: 320px;
   }
   #search-input {
@@ -384,7 +387,7 @@ option {
     .filter{
       width: 300px;
     }
-    .applyAndFilter {
+    .applyAndFilter , #btn-practice  {
       width: 300px;
     }
     #search-input {
@@ -426,7 +429,7 @@ option {
   .filter{
     width: 270px;
   }
-  .applyAndFilter {
+  .applyAndFilter , #btn-practice {
     width: 270px;
   }
   ul , li{

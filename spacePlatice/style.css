@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  font-family: 'inter';
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.63);
+  color: #fff;
+  z-index: 2;
+}
+
+.centralize {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+button.dark , .linkHomePhrases.dark{
+  background-color: #21262d;
+}
+
+label{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  font-size: 22px;
+  font-weight: 900;
+
+  padding: 8px;
+  background-color: #d04a4a;   
+}
+
+img{
+  width: 250px;
+  margin-top: 10rem;
+}
+
+.loading-container{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.63);
+  z-index: 2;
+  display: none;
+}
+
+
+#container-item-links{
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 4px;
+}
+.menu__item{
+  font-size: 26px;
+}
+
+i{
+  color: #fff;
+}
+
+.title{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+li{
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  border-left: 6px solid #d04a4a;
+  box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.63);
+  background-color:#d04a4a22;
+  border-bottom: 1px solid #ffffff92;
+
+}
+
+  #phrasesStayHere{
+    align-items: flex-start;
+    font-size: 18px;
+    width: 700px;
+    word-break: break-word;
+    color: #fff;
+  }
+
+  .img-people{
+    width: 400px;
+    opacity: 0.6;
+  }
+  button , a{
+    width: 700px;
+    height: 50px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 900;
+    list-style: none;
+    color: #fff;
+    border: none;
+}
+  
+  .blackText {
+    width: 150px;
+    font-size: 20px;
+    color:#fff;
+  }
+  
+  .purpleText {
+    width: 700px;
+    color: #8000ff;
+    font-style: italic;
+    font-size: 20px;
+    list-style: none;
+    margin-top: 20px;
+  }
+  
+  .purpleText2 {
+    width: 700px;
+    color: #8000ff;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+  
+  .repeatPhrase {
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .paragraph {
+    font-size: 20px;
+  }
+
+  .linkHomePhrases{
+    margin-bottom: 100px;
+    background-color: #6e60bd;
+    border: none;
+  }
+  
+  .btnPhrasesMotivation{
+    background-color: #d04a4a;   
+    margin-bottom: 50px;
+  }
+
+  .otherPhrases {
+    margin-top: 20px;
+    background-color: #6e60bd;
+    margin-bottom: 50px;
+  }
+
+
+  @media screen and (max-width: 810px) {
+
+    .title{
+      width: 510px;
+    }
+    .purpleText {
+      width: 570px;
+    }
+    button , a{
+      width: 570px;
+    }
+    #phrasesStayHere {
+      width: 570px;
+    }
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+    .title{
+      width: 400px;
+    }
+    .purpleText {
+      width: 400px;
+    }
+    button , a{
+      width: 470px;
+    }
+    #phrasesStayHere {
+      width: 470px;
+    }
+
+  }
+
+  @media screen and (max-width: 550px) {
+
+    .title{
+      width: 330px;
+    }
+    .purpleText , button , a , #phrasesStayHere {
+      width: 330px;
+    }
+    #phrasesStayHere{
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 465px) {
+    
+    .title{
+      width: 280px;
+    }
+
+    .purpleText , button , a , #phrasesStayHere {
+      width: 280px;
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+
+    .title{
+      width: 260px;
+    }
+    .purpleText , button , a  , #phrasesStayHere {
+      width: 260px;
+    }
+
+  }

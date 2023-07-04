@@ -49,6 +49,7 @@ form {
 }
 
 .textarea {
+  position: relative;
   height: 150px;
   width: 670px;
   resize: none;
@@ -58,7 +59,18 @@ form {
   margin-bottom: 20px;
   border: none;
 }
+.container-count{
+  display: flex;
+  flex-direction: row-reverse;
+  height: 10px;
+  width: 700px;
+}
 
+#limit , #count{
+  color: #fff;
+  font-size: 16px;
+
+}
 
 a{
   display: flex;
@@ -72,6 +84,7 @@ a{
 span{
   font-weight: 600;
 }
+
 #menu__link{
   font-size: 26px;
 }
@@ -111,6 +124,7 @@ input[type="radio"]:checked{
 .registerButton {
   cursor: pointer;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 #buttonRegister.dark{
@@ -139,7 +153,7 @@ span{
 }
 
 @media screen and (max-width: 820px)  {
-   .titleRegister , #buttonRegister ,#container-radio, .label{
+   .titleRegister , #buttonRegister ,#container-radio, .label , .container-count{
     width: 600px;
   }
   .textarea{
@@ -148,7 +162,7 @@ span{
 }
 
 @media screen and (max-width: 700px)  {
-  .titleRegister  , #buttonRegister , #container-radio , .label{
+  .titleRegister  , #buttonRegister , #container-radio , .label , .container-count{
     width: 550px;
   }
   .textarea{
@@ -156,7 +170,7 @@ span{
   }
 }
 @media screen and (max-width: 600px)  {
-  .titleRegister  , #buttonRegister ,#container-radio, .label{
+  .titleRegister  , #buttonRegister ,#container-radio, .label , .container-count{
     width: 410px;
   }
   .textarea{
@@ -165,7 +179,7 @@ span{
 }
 @media screen and (max-width: 500px)  {
 
-   .titleRegister  , #buttonRegister , #container-radio, .label{
+   .titleRegister  , #buttonRegister , #container-radio, .label , .container-count{
     width: 370px;
   }
   .textarea{
@@ -175,7 +189,7 @@ span{
 
 @media screen and (max-width: 430px)  {
 
-  .titleRegister  , #buttonRegister , #container-radio, .label{
+  .titleRegister  , #buttonRegister , #container-radio, .label , .container-count{
    width: 360px;
  }
  .textarea{
@@ -184,7 +198,7 @@ span{
 }
 @media screen and (max-width: 380px)  {
 
-  .titleRegister  , #buttonRegister , #container-radio, .label{
+  .titleRegister  , #buttonRegister , #container-radio, .label , .container-count{
    width: 330px;
  }
  .textarea{
