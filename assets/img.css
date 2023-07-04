@@ -47,12 +47,8 @@ img {
   display: none;
 }
 
-
-  
-
 @media (max-width: 800px) {
-  
- 
+
   .container-return {
       width: 100% !important;
       max-width: 400px;
@@ -68,16 +64,14 @@ img {
       max-width: 400px;
     }
     .back-sentences{
-      width: 200px;
+      width: 200px; 
     }
-
   }
   
   @media (max-width: 450px) {
-    
-   
+  
   img {
-      max-width: 320px;
+    max-width: 320px;
     }
   }
 
@@ -85,17 +79,16 @@ img {
 
   
     img {
-      max-width: 320px;
+    max-width: 320px;
     }
     } 
   strong {
-      font-size: 20px;
+    font-size: 20px;
     width: 100%;
     }
   
   @media (max-width: 450px) {
-    
-   
+
   img {
       max-width: 320px;
     }
