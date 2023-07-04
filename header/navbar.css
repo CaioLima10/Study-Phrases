@@ -86,7 +86,9 @@ header {
 span {
   margin-bottom: 30px;
 }
-
+.container-item-links{
+  margin-bottom: 25px;
+}
 #menu__links {
   text-decoration: none;
   display: flex;
