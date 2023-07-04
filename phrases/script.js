@@ -15,6 +15,22 @@ const body = document.querySelector("body");
 const header = document.querySelector("header")
 const toggle = document.querySelector(".toggle");
 
+// contador de letras
+const count = document.querySelector("#count")
+
+phrasesTextarea.addEventListener("input", () => {
+  if(phrasesTextarea.value.length < 120){
+    count.style.color = '#fff'
+    count.innerText = phrasesTextarea.value.length
+  }else{
+    count.style.color = '#d04a4a'
+    count.innerText = 'Max'
+    phrasesTextarea.value = phrasesTextarea.value
+  }
+
+})
+
+
 const getTheme = localStorage.getItem("theme");
 if (getTheme === "dark") {
   body.classList.add("dark");
@@ -165,6 +181,10 @@ form.addEventListener('submit', (event) => {
 
     textarea.value = '';
     inputChecked.checked = false;
+
+    count.innerText = 0
+    count.style.color = "#fff"
+    
   } catch (error) {
     console.log('error', error);
   }
