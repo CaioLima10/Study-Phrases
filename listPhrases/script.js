@@ -124,19 +124,22 @@ function createItem(item) {
 }
 
 async function listPhrases() {
-  const phrasesList = document.getElementById("phrasesStayHere");
+
+  try {
+    const phrasesList = document.getElementById("phrasesStayHere");
+    
+    phrasesList.innerHTML = "";
   
-  phrasesList.innerHTML = "";
-
-  const myPhrases = await listPhrase();
-  console.log({ myPhrases })
-  if (myPhrases.length) {
-    for (const item of myPhrases) {
-      const { id, phrase, priority } = item;
-      const ul = createItem({ id, phrase, priority });
-      phrasesList.append(ul);
-
+    const myPhrases = await listPhrase();
+    if (myPhrases.length) {
+      for (const item of myPhrases) {
+        const { id, phrase, priority } = item;
+        const ul = createItem({ id, phrase, priority });
+        phrasesList.append(ul);
+      }
     }
+  } catch (error) {
+    console.log(erro)
   }
 }
 
@@ -572,6 +575,7 @@ const header = document.querySelector("header")
 const button = document.querySelector("button")
 const toggle = document.querySelector(".toggle");
 const practiceBtn = document.querySelector("#practice-btn")
+const btnPractice = document.querySelector("#btn-practice")
 
 const getTheme = localStorage.getItem("theme");
 
@@ -583,6 +587,7 @@ if (getTheme === "dark") {
   prevButton.classList.add("dark")
   nextButton.classList.add("dark")
   returnPhrases.classList.add("dark")
+  btnPractice.classList.add("dark")
 
 
   toggle.classList.add("active");
@@ -600,6 +605,7 @@ toggle.addEventListener("click", () => {
   prevButton.classList.toggle("dark")
   nextButton.classList.toggle("dark")
   returnPhrases.classList.toggle("dark")
+  btnPractice.classList.toggle("dark")
   
   
 
@@ -612,6 +618,7 @@ toggle.addEventListener("click", () => {
       && nextButton.classList.contains("dark")
       && returnPhrases.classList.contains("dark")
       && select.classList.contains("dark")
+      && btnPractice.classList.contains("dark")
 
    
       ) {
@@ -623,6 +630,5 @@ toggle.addEventListener("click", () => {
     toggle.innerHTML = `<i class="fas fa-sun"></i>`
   }
 });
-
 
 listPhrases(); 
