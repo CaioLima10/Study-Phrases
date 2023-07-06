@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
     <script src="../http/client.js" defer></script>
     <script src="script.js" defer></script>
   </head>
@@ -57,22 +58,42 @@
   </nav>
 
 
-    <h1 class="title">Vamos praticar um pouco!</h1>
+    <h1 class="title">
+      Vamos praticar um pouco!
+    </h1>
     <p class="paragraph">
-      <span class="blackText">"Frases aleatórias" ex:</span>
-      <div class="purpleText"></div></p>
+      <span class="blackText">
+        "Frases aleatórias" ex:
+      </span>
+      <div class="purpleText"></div>
+    </p>
 
-    <p class="repeatPhrase">Repita cada frase 10 vezes</p>
+      <div class="container-modal">
+        <div class="modal">
+          <div class="modal-phrase-motivation">
+            Parabens você conquistou uma Frases Motivacional. <br> 
+            <img src="../assets/star.svg" alt="STAR">
+            </div>
+        </div>
+      </div> 
+
+    <p class="repeatPhrase">
+      Repita cada frase 10 vezes
+    </p>
 
 
     <div id="phrasesStayHere"></div>
  
-    <button  onclick="loadingRandom()"  id="btnRandomPhrases" class="otherPhrases">
-    Quero Praticar!
+    <button  
+      onclick="loadingRandom()"  
+      id="btnRandomPhrases" 
+      class="otherPhrases">
+        Quero Praticar!
     </button>
 
     <button class="linkHomePhrases">
       <a class="aLink" href="../phrases/index.html">Voltar para Home</a>
     </button>
+  
   </body>
 </html>

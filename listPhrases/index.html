@@ -18,6 +18,9 @@
   integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"defer></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
+
   <script src="../http/client.js" defer></script>
   <script src="script.js" defer></script>
 
@@ -175,16 +178,19 @@
       Editar Frase
     </span>
       <input 
+      id="inputEdit"
       class="input-edit" 
       type="text" 
       placeholder="Frase"
+      maxlength="150"
       >
   
     <div id="radioInformation">
       <input 
         id="radioOne" 
+        class="priority-radio"
         type="radio" 
-        name="prioridade" 
+        name="priority" 
         value="low">
       <label 
         id="radioOne" 
@@ -193,8 +199,9 @@
       </label>
       <input 
         id="radioTwo" 
+        class="priority-radio"
         type="radio" 
-        name="prioridade" 
+        name="priority" 
         value="medium"
       >
       <label 
@@ -205,8 +212,9 @@
     </label>
       <input 
         id="radioThree" 
+        class="priority-radio"
         type="radio" 
-        name="prioridade" 
+        name="priority" 
         value="high"
       >
       <label 
@@ -220,7 +228,8 @@
     <div class="edit-btn">
       <button 
         id="button"
-        class="edit-btn-confirm">
+        class="edit-btn-confirm"
+      >
           Confirmar
     </button>
       <button 
@@ -249,11 +258,11 @@
         <option 
           value="pagThree" 
           selected >
-          Página / 3
+          Página / 03
         </option>
         <option 
           value="pagFive">
-          Página / 5
+          Página / 05
         </option>
         <option 
           value="pagTen">
@@ -287,10 +296,6 @@
     class="applyAndFilter">
     <a href="../spacePlatice/index.html">Praticar</a>
   </button>
-
-  <script 
-    src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
-  </script>
 
 </body>
 </html>
