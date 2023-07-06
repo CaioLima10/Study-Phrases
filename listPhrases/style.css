@@ -22,6 +22,7 @@
 .border-color-phrases.is-high {
   background-color: #d04a4a;
 }
+
 .title {
   color: #fff;
   width: 680px;
@@ -82,6 +83,7 @@
   font-size: 22px;
   background-color: #fff;
 }
+
 
 button.dark {
   background-color: #21262d;
@@ -190,7 +192,7 @@ select {
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
-  margin-bottom: 13rem;
+  margin-bottom: 3rem;
   appearance: none;
   cursor: pointer;
   font-size: 22px;
@@ -226,6 +228,16 @@ option {
   color: #fff;
 }
 
+/* modal filter */
+
+.my-custom-title{
+  font-size: 22px;
+  color: #000;
+}
+.my-custom-button-class{
+  width: 100px;
+}
+
 @media screen and (max-width: 810px) {
   span {
     width: 510px;
@@ -252,6 +264,7 @@ option {
     width: 460px;
     display: none;
   }
+
 }
 
 @media screen and (max-width: 640px) {

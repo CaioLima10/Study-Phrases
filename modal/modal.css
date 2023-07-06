@@ -51,7 +51,7 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.144);
   width: 160px;
   top: 2.5rem;
-  right: 6rem;
+  right: 5rem;
   height: 95px;
   transform: scale(0);
   transform-origin: top right;
@@ -134,11 +134,50 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 650px) {
+  .settings {
+    max-width: 480px;
+  }
+  .task-menu {
+    width: 100px;
+    height: 65px;
+    right: 6rem;
+  }
+
+  .btnDeleteByPhrase,
+  .btnEditByPhrase{
+    font-size: 12px;
+    margin-right: -1px;
+  }
+  .btnEditByPhrase{
+    margin-left: -55px;  
+  }
+}
+@media screen and (max-width: 530px) {
+  .settings {
+    max-width: 480px;
+  }
   .task-menu {
     width: 100px;
     height: 65px;
     right: 5rem;
+  }
+
+  .btnDeleteByPhrase,
+  .btnEditByPhrase{
+    font-size: 12px;
+    margin-right: -1px;
+  }
+  .btnEditByPhrase{
+    margin-left: -55px;  
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .task-menu {
+    width: 100px;
+    height: 65px;
+    right: 4.5rem;
   }
 
   #showModal {
@@ -246,7 +285,6 @@
     color: #fff;
 }
 
-
 .modal-background {
   position: fixed;
   top: 0;
@@ -280,6 +318,8 @@
       width: 250px;
   }
 }
+
+/* modal editar */
 
 .container-modal-edit {
   width: 550px;
@@ -332,10 +372,13 @@
   background-color: #5540cd;
 }
 
+.priority-radio[type="radio"]{
+  border: 2px solid #000;
+} 
+
 input[type="radio"]{
   appearance: none;
   background-color: #fff;
-  border: 2px solid #fff;
   padding: 0.5rem;
   border-radius: 50%;
   cursor: pointer;
