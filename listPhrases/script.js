@@ -12,13 +12,13 @@ const modal = document.querySelector(".container-modal")
 const btnOkDelete = document.querySelector(".btnOk")
 const btnClose = document.querySelector(".btnClose")
 
-//opção edição documentação
+// opção de edição de documentação
 const modalEdit = document.querySelector(".container-modal-edit");
 const editBtnConfirm = document.querySelector(".edit-btn-confirm");
-const closeContainer = document.querySelector(".close-container")
+const closeContainer = document.querySelector(".close-container");
 const inputEdit = document.querySelector(".input-edit");
 const containerEditRemove = document.querySelector(".container-edit-remove");
-const modalBackgroundBody = document.querySelector(".modal-background") 
+const modalBackgroundBody = document.querySelector(".modal-background");
 
 // navbar
 const navbarToggle = document.getElementById('navbar-toggle');
@@ -59,6 +59,7 @@ function openFilter(){
 }
 
 function closeFilter(){
+
   iconCloseFiltered.style.display = "none"
   iconOpenFilter.style.display = "block"
   containerSearchFilter.style.display = "none"
@@ -70,15 +71,16 @@ function textOpen(){
 
 
 function createItem(item) {
+  const { id, phrase, priority } = item;
 
   const liItem = document.createElement("li");
   liItem.classList.add("paragraph");
 
   const div = document.createElement("div");
 
-  console.log(item.priority)
+  console.log(item.priority);
 
-  div.classList.add('border-color-phrases' , `is-${item.priority}`);
+  div.classList.add("border-color-phrases", `is-${item.priority}`);
 
   const phraseElement = document.createElement("li");
   phraseElement.classList.add("phrases");
@@ -95,13 +97,14 @@ function createItem(item) {
   taskMenuUl.classList.add("task-menu");
 
   const deletePhraseLi = document.createElement("li");
-  deletePhraseLi.addEventListener("click", () => deletePhrase({ id: item.id }));
+  deletePhraseLi.addEventListener("click", () => deletePhrase(id));
   deletePhraseLi.innerHTML = `
     <button class="btnDeleteByPhrase"><i class="fa-solid fa-circle-minus"></i>Excluir frase</button>
   `;
 
   const editPhraseLi = document.createElement("li");
-  editPhraseLi.addEventListener("click", () => editPhrase({ id: item.id }));
+  editPhraseLi.addEventListener("click", () => editPhrase(id , phrase , priority));
+
   editPhraseLi.innerHTML = `
     <button class="btnEditByPhrase"><i class="fa-solid fa-chart-column"></i>Editar</button>
   `;
@@ -168,20 +171,33 @@ document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.querySelector("#filter-input");
     const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
     
+    if( !searchInput.value || !priorityInputs.length){
+      Swal.fire({
+        title: 'necessario prencher o campo de "Pesquisa" e "Prioridade"',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+        customClass: {
+          confirmButton: 'my-custom-button-class',
+          title: 'my-custom-title',
+          container: 'my-custom-modal-container'
+        }
+      });
+    }
+
     if (searchInput.value && priorityInputs.length > 0) {
       filterInput();
       filterPriority();
       checkEmptyResults();
       backSentences.style.display = "block"
-      containerSelect.style.display = "none"
-     
+      containerSelect.style.display = "none"   
     }
-    
   }
 
   function checkEmptyResults() {
     const listItems = document.querySelectorAll(".paragraph");
     const containerImg = document.querySelector("#containerImg");
+    const btnPractice = document.querySelector("#btn-practice")
+    btnPractice.style.display = "none"
 
     let hasDisplayedItem = false;
 
@@ -264,6 +280,7 @@ returnPhrases.addEventListener("click", () => {
   const listItems = document.querySelectorAll(".paragraph");
   const searchInput = document.querySelector("#filter-input");
   const containerImg = document.querySelector("#containerImg");
+  const btnPractice = document.querySelector("#btn-practice")
 
 
   listItems.forEach((item) => {
@@ -278,60 +295,80 @@ returnPhrases.addEventListener("click", () => {
   containerSearchFilter.style.display = "none"
   containerSelect.style.display = "flex"
   backSentences.style.display = "none"
+  btnPractice.style.display = "block"
   
   searchInput.value = ""
   closeFilter()
   listPhrases()
 });
 
-async function editPhrase({ id }) {
+async function editPhrase(id, phrase, priority) {
   modalEdit.classList.add("active-edit");
-  modalBackgroundBody.style.display = "block"
+  modalBackgroundBody.style.display = "block";
 
-  return new Promise((resolve, reject) => {
-    editBtnConfirm.addEventListener("click", confirmEdit);
+  const priorityInputs = document.querySelectorAll(`input[value="${priority}"]`);
 
-    async function confirmEdit() {
-      const newPhrase = inputEdit.value 
-      const newInputChecked = document.querySelector('input[name="prioridade"]:checked').value;
+  inputEdit.value = phrase;
 
-      if(!newPhrase || !newInputChecked){
-        alert("para editar precisa prencher todos os campos")
-        return
+  priorityInputs.forEach(input => {
+      if (input.value === priority) {
+        input.checked = true;
+      } else {
+        input.checked = false;
       }
-      
-      try {
-        const response = await client({
-          method: 'PUT',
-          path: `phrase/${id}`,
-          body: { phrase: newPhrase, priority: newInputChecked }
-        });
-        
-        if (response && response.status === 204) {
-          console.log('Frase atualizada com sucesso!');
-          resolve();
-        } else {
-          reject(new Error("frase não foi editada"))
+});
+
+  editBtnConfirm.addEventListener("click", confirmEdit);
+    
+  function confirmEdit() {
+    const newPhrase = inputEdit.value;
+
+    if (!newPhrase) {
+      Swal.fire({
+        title: '"Para editar, é necessário preencher todos os campos."',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+        customClass: {
+          confirmButton: 'my-custom-button-class',
+          title: 'my-custom-title',
+          container: 'my-custom-modal-container'
         }
-      } catch (error) {
-        reject(error);
-      }
-      
-      modalBackgroundBody.style.display = "none"
-      editBtnConfirm.removeEventListener("click", confirmEdit);
-      modalEdit.classList.remove("active-edit");
-
-      listPhrases();
+      });
+      return;
     }
 
-    closeContainer.addEventListener("click", () => {
-      modalBackgroundBody.style.display = "none"
-      modalEdit.classList.remove("active-edit");
+    const newPriority = document.querySelector(`input[name="priority"]:checked`).value;
+
+    const body = { phrase: newPhrase, priority: newPriority };
+
+    try {
+      client({ method: 'PUT', path: `phrase/${id}`, body })
+      swal({
+        text: `frase atualizada com sucesso`,
+        icon: "success",
+        timer: 1500, 
+        buttons: false, 
+        closeOnClickOutside: false,
     })
+    } catch (error) {
+      console.log(error)
+    }
+
+    modalBackgroundBody.style.display = "none";
+    editBtnConfirm.removeEventListener("click", confirmEdit);
+    modalEdit.classList.remove("active-edit");
+
+    listPhrases();
+  }
+
+    closeContainer.addEventListener("click", () => {
+    modalBackgroundBody.style.display = "none";
+    modalEdit.classList.remove("active-edit");
   });
 }
 
-async function deletePhrase({ id }) {
+
+async function deletePhrase( id ) {
   modal.classList.add("active")
   modalBackgroundBody.style.display = "block"
 
@@ -569,7 +606,8 @@ async function deletePhrase({ id }) {
     }
   });
 
-  // theme dark mode
+// dark mode
+
 const body = document.querySelector("body");
 const header = document.querySelector("header")
 const button = document.querySelector("button")
