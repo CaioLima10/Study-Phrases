@@ -33,13 +33,12 @@ async function listPhrase() {
 }
 
 
-async function updatePhrase({ id }) {
-  const path = `phrase/${id}`
-  await client({ method: 'PUT', path })
+async function updatePhrase( id, phrase, priority  ) {
+  await client({ method: 'PUT', path:` phrase/${id} `, body: { phrase , priority } })
 
 }
 
-async function deletePhrase( { id } ) {
+async function deletePhrase( id ) {
   const path = `phrase/${ id }`
   await client({ method: 'DELETE' , path })
 }
