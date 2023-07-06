@@ -8,8 +8,10 @@ const closeIcons = document.querySelectorAll('.fa-times');
 // slider das frases select
 const containerSelect = document.querySelector(".container-select")
 
+// carregar frases
 const loading = document.querySelector(".loading");
 
+// dark mode
 const body = document.querySelector("body");
 const header = document.querySelector("header")
 const toggle = document.querySelector(".toggle");
@@ -18,6 +20,7 @@ const linkHomePhrases = document.querySelector(".linkHomePhrases")
 
 
 const getTheme = localStorage.getItem("theme");
+
 if (getTheme === "dark") {
   body.classList.add("dark");
   header.classList.add("dark")
@@ -105,9 +108,6 @@ function generateRandomPhraseMotivation(list = []) {
   return index;
 }
 
-getPhraseMotivation()
-
-
 function listPhraseMotivation(listPhrasesMotivation = []) {
   const listaSorteados = [];
   for (let index = 0; index < 1; index++) {
@@ -123,40 +123,39 @@ function loadingRandom() {
   const div = document.createElement("div");
   div.classList.add("loading", "centralize");
 
-  const container = document.createElement("div");
-  container.classList.add("loading-container");
-
-
   const label = document.createElement("label");
   label.innerHTML = "Carregando...";
 
-  const img = document.createElement("img");
-  img.src = "../assets/lendo.png";
-
-  container.appendChild(label);
-  container.appendChild(img);
-  div.appendChild(container);
+  div.appendChild(label);
   document.body.appendChild(div);
 
   setTimeout(() => hideLoadingRandom(), 1000);
 }
+
 
 function hideLoadingRandom() {
   const loadings = document.getElementsByClassName("loading");
 
   if (loadings.length) {
     loadings[0].remove();
-    listPhrases();
+  
   }
+  
 }
+
+const modal = document.querySelector(".container-modal");
+const modalBackground = document.querySelector(".modal-background")
+
+let clickCount = 0;
+let motivationElement = null;
 
 async function listPhrases() {
   try {
-
     const phrasesList = document.querySelector("#phrasesStayHere");
     phrasesList.innerHTML = "";
+
     const myPhrases = await listPhrase();
-    const randomPhrases = sortearFrases(myPhrases)
+    const randomPhrases = sortearFrases(myPhrases);
 
     if (randomPhrases.length) {
       for (const item of randomPhrases) {
@@ -165,11 +164,47 @@ async function listPhrases() {
         li.textContent = phrase;
         phrasesList.append(li);
       }
+
+      clickCount++;
+
+      if (clickCount === 6) {
+        modal.style.display = "flex";
+        modalBackground.style.display = "block"
+        
+        const purpleText = document.querySelector(".purpleText");
+
+        const motivation = await getPhraseMotivation();
+        const div = document.createElement("div");
+        div.textContent = motivation;
+        purpleText.appendChild(div);
+
+
+        clickCount = 0;
+        motivationElement = div;
+        
+        setTimeout(() => {
+          modal.style.display = "none";
+          modalBackground.style.display = "none"
+          purpleText.style.display = "flex";
+        }, 2000);
+
+          } else if (motivationElement) {
+        motivationElement.remove();
+        const purpleText = document.querySelector(".purpleText");
+        purpleText.style.display = "none";
+      }
     }
   } catch (error) {
     console.error(error);
   }
 }
+
+
+const btnRandomPhrases = document.querySelector("#btnRandomPhrases");
+button.addEventListener("click", () => setTimeout(() =>{
+  listPhrases()
+}, 1000));
+
 
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
