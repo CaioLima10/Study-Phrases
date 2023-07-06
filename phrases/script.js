@@ -1,7 +1,9 @@
+// registro da frases
 const form = document.getElementById("form");
 const buttonRegister = document.getElementById("buttonRegister");
 const phrasesTextarea = document.getElementById("phrase");
 const phrasesStayHere = document.querySelector(".phrasesStayHere");
+
 // abrir e fechar modal
 const modalBackgroundBody = document.querySelector(".modal-background")
 const navbarToggle = document.getElementById('navbar-toggle');
@@ -11,24 +13,13 @@ const closeIcons = document.querySelectorAll('.fa-times');
 // slider das frases select
 const containerSelect = document.querySelector(".container-select")
 
-const body = document.querySelector("body");
-const header = document.querySelector("header")
-const toggle = document.querySelector(".toggle");
-
 // contador de letras
 const count = document.querySelector("#count")
 
-phrasesTextarea.addEventListener("input", () => {
-  if(phrasesTextarea.value.length < 120){
-    count.style.color = '#fff'
-    count.innerText = phrasesTextarea.value.length
-  }else{
-    count.style.color = '#d04a4a'
-    count.innerText = 'Max'
-    phrasesTextarea.value = phrasesTextarea.value
-  }
-
-})
+// dark mode
+const body = document.querySelector("body");
+const header = document.querySelector("header")
+const toggle = document.querySelector(".toggle");
 
 
 const getTheme = localStorage.getItem("theme");
@@ -61,6 +52,18 @@ toggle.addEventListener("click", () => {
   }
 });
 
+
+phrasesTextarea.addEventListener("input", () => {
+  if(phrasesTextarea.value.length < 150){
+    count.style.color = '#fff'
+    count.innerText = phrasesTextarea.value.length
+  }else{
+    count.style.color = '#d04a4a'
+    count.innerText = 'Max'
+    phrasesTextarea.value = phrasesTextarea.value
+  }
+
+})
 
 function enableButton() {
   buttonRegister.disabled = true;
