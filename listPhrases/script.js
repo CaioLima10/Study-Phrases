@@ -133,8 +133,7 @@ async function listPhrases() {
     if (myPhrases.length) {
       for (const item of myPhrases) {
         const { id, phrase, priority } = item;
-        const timestamp = new Date().toLocaleString();
-        const ul = createItem({ id, phrase, priority, timestamp });
+        const ul = createItem({ id, phrase, priority});
         phrasesList.append(ul);
       }
     }
