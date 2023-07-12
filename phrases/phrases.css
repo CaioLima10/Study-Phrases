@@ -6,15 +6,28 @@ body {
   flex-direction: column;
 }
 
-.accountPhrases{
-  color: #fff;
-  font-size: 18px;
-  background-color: red;
-  padding: 6px 11px;
+.container-counter-phrases{
+  position: absolute;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.counter-phrases{
+  width: 25px;
+  height: 25px;
+  background-color: #d04a4a;
+  border: 1px solid #fff;
   border-radius: 50%;
-  margin-left: 8.5rem;
-  margin-top: 5rem;
-  border: none;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
 }
 
 #next-left-phrase{
@@ -124,7 +137,7 @@ input[type="radio"]:checked{
 .registerButton {
   cursor: pointer;
   margin-top: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #buttonRegister.dark{
@@ -136,10 +149,6 @@ button ,  #buttonRegister{
   background-color: #5540cd;
   border: none;
   color: #ffffff;
-}
-
-button#buttonRegister:disabled {
-  background-color: gray;
 }
 
 .practicePhrases {

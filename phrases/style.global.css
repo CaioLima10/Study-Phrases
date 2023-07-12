@@ -17,10 +17,13 @@ body.dark {
   background-color: #050607;
 }
 
+
 header.dark {
   background-color: #21262d;
   border-bottom: 1px solid #ffffff2a;
 }
+
+
 prevButton.dark , 
 select.dark,
 returnPhrases.dark{
