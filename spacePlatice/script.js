@@ -124,9 +124,13 @@ function loadingRandom() {
   div.classList.add("loading", "centralize");
 
   const label = document.createElement("label");
-  label.innerHTML = "Carregando...";
+  label.innerHTML = `<div class="custom-loader"></div>`;
+
+  const span = document.createElement("span");
+  span.innerHTML = 'carregando...';
 
   div.appendChild(label);
+  label.appendChild(span)
   document.body.appendChild(div);
 
   setTimeout(() => hideLoadingRandom(), 1000);
@@ -138,9 +142,7 @@ function hideLoadingRandom() {
 
   if (loadings.length) {
     loadings[0].remove();
-  
   }
-  
 }
 
 const modal = document.querySelector(".container-modal");
@@ -164,44 +166,65 @@ async function listPhrases() {
         li.textContent = phrase;
         phrasesList.append(li);
       }
-
-      clickCount++;
-
-      if (clickCount === 6) {
-        modal.style.display = "flex";
-        modalBackground.style.display = "block"
-        
-        const purpleText = document.querySelector(".purpleText");
-
-        const motivation = await getPhraseMotivation();
-        const div = document.createElement("div");
-        div.textContent = motivation;
-        purpleText.appendChild(div);
-
-
-        clickCount = 0;
-        motivationElement = div;
-        
-        setTimeout(() => {
-          modal.style.display = "none";
-          modalBackground.style.display = "none"
-          purpleText.style.display = "flex";
-        }, 2000);
-
-          } else if (motivationElement) {
-        motivationElement.remove();
-        const purpleText = document.querySelector(".purpleText");
-        purpleText.style.display = "none";
-      }
     }
   } catch (error) {
     console.error(error);
   }
 }
+async function loadPhrasesTop(){
+
+  const list = await listPhrase()
+  const phrasesList = document.querySelector("#phrasesStayHere");
+
+  if(list.length < 6){
+    phrasesList.style.display = "none"
+    Swal.fire({
+      title: 'necessario ter 6 frases cadastradas',
+      showCancelButton: false,
+      confirmButtonText: 'OK',
+      customClass: {
+        confirmButton: 'my-custom-button-class',
+        title: 'my-custom-title-class'
+      }
+    });
+  }else{
+    phrasesList.style.display = "block"
+    clickCount++;
+
+    if (clickCount === 6) {
+      modal.style.display = "flex";
+      modalBackground.style.display = "block"
+      
+      const purpleText = document.querySelector(".purpleText");
+
+      const motivation = await getPhraseMotivation();
+      const div = document.createElement("div");
+      div.textContent = motivation;
+      purpleText.appendChild(div);
+
+
+      clickCount = 0;
+      motivationElement = div;
+      
+      setTimeout(() => {
+        modal.style.display = "none";
+        modalBackground.style.display = "none"
+        purpleText.style.display = "flex";
+      }, 2000);
+
+        } else if (motivationElement) {
+      motivationElement.remove();
+      const purpleText = document.querySelector(".purpleText");
+      purpleText.style.display = "none";
+    }
+  }
+}
+
 
 
 const btnRandomPhrases = document.querySelector("#btnRandomPhrases");
 button.addEventListener("click", () => setTimeout(() =>{
+  loadPhrasesTop()
   listPhrases()
 }, 1000));
 
