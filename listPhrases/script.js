@@ -30,8 +30,6 @@ const closeIcon = document.querySelector(".fa-times")
 // slider das frases select
 const containerSelect = document.querySelector(".container-select")
 
-
-
 navbarToggle.addEventListener('click', () => {
   navbar.classList.toggle('open');
 });
@@ -74,16 +72,14 @@ function createItem(item) {
   const { id, phrase, priority } = item;
 
   const liItem = document.createElement("li");
-  liItem.classList.add("paragraph");
+  liItem.classList.add('paragraph');
 
+  
   const div = document.createElement("div");
-
-  console.log(item.priority);
-
   div.classList.add("border-color-phrases", `is-${item.priority}`);
 
   const phraseElement = document.createElement("li");
-  phraseElement.classList.add("phrases");
+  phraseElement.classList.add("phrases" , `is-${item.priority}`);
   phraseElement.textContent = item.phrase;
 
   const settingsDiv = document.createElement("div");
@@ -126,23 +122,24 @@ function createItem(item) {
   return ul;
 }
 
-async function listPhrases() {
 
+async function listPhrases() {
   try {
-    const phrasesList = document.getElementById("phrasesStayHere");
     
+    const phrasesList = document.getElementById("phrasesStayHere");
     phrasesList.innerHTML = "";
-  
+
     const myPhrases = await listPhrase();
     if (myPhrases.length) {
       for (const item of myPhrases) {
         const { id, phrase, priority } = item;
-        const ul = createItem({ id, phrase, priority });
+        const timestamp = new Date().toLocaleString();
+        const ul = createItem({ id, phrase, priority, timestamp });
         phrasesList.append(ul);
       }
     }
   } catch (error) {
-    console.log(erro)
+    console.log(error);
   }
 }
 
@@ -167,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function() {
   applyAndFilter.addEventListener("click", applyFilters);
   
   function applyFilters() {
+
+
     const containerSelect = document.querySelector('.container-select');
     const searchInput = document.querySelector("#filter-input");
     const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
@@ -218,8 +217,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.querySelector("#filter-input");
     const listItems = document.querySelectorAll(".paragraph");
     const containerImg = document.querySelector("#containerImg");
-
+      
     const filter = searchInput.value.toLowerCase();
+
     let hasDisplayedItem = false;
 
     listItems.forEach((item) => {
@@ -238,8 +238,9 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       containerImg.style.display = "none";
     }
-
   }
+
+
 
   function filterPriority() {
     const priorityInputs = document.querySelectorAll('input[name="priority"]:checked');
@@ -302,9 +303,12 @@ returnPhrases.addEventListener("click", () => {
   listPhrases()
 });
 
+
 async function editPhrase(id, phrase, priority) {
   modalEdit.classList.add("active-edit");
   modalBackgroundBody.style.display = "block";
+
+
 
   const priorityInputs = document.querySelectorAll(`input[value="${priority}"]`);
 
@@ -321,8 +325,40 @@ async function editPhrase(id, phrase, priority) {
   editBtnConfirm.addEventListener("click", confirmEdit);
     
   function confirmEdit() {
+
+    const listItems = document.querySelectorAll(".phrases");
     const newPhrase = inputEdit.value;
 
+
+    for (let i = 0; i < listItems.length; i++) {
+      if (listItems[i].textContent === newPhrase 
+          || listItems[i].textContent.toLowerCase() === newPhrase.toLowerCase()) {
+          Swal.fire({
+            title: "Esta frase já foi cadastrada",
+            showCancelButton: false,
+            confirmButtonText: "OK",
+            customClass: {
+              confirmButton: "my-custom-button-class",
+              title: "my-custom-title"
+          }
+        });
+        return;
+      }
+    }
+    
+    if(inputEdit.value.length < 3){
+      Swal.fire({
+        title: 'necessario ter no mínimo 3 caracteres',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+        customClass: {
+          confirmButton: 'my-custom-button-class',
+          title: 'my-custom-title'
+        }
+      })
+      return
+    }
+  
     if (!newPhrase) {
       Swal.fire({
         title: '"Para editar, é necessário preencher todos os campos."',
@@ -357,6 +393,7 @@ async function editPhrase(id, phrase, priority) {
     modalBackgroundBody.style.display = "none";
     editBtnConfirm.removeEventListener("click", confirmEdit);
     modalEdit.classList.remove("active-edit");
+    
 
     listPhrases();
   }
@@ -366,6 +403,7 @@ async function editPhrase(id, phrase, priority) {
     modalEdit.classList.remove("active-edit");
   });
 }
+
 
 
 async function deletePhrase( id ) {
@@ -419,9 +457,13 @@ async function deletePhrase( id ) {
 
   const prevButton = document.querySelector('.prev-button');
   const nextButton = document.querySelector('.next-button');
+
+
   
   prevButton.addEventListener('click', showPrevPhrases);
   nextButton.addEventListener('click', showNextPhrases);
+
+
   
   function showNextPhrases() {
     const phrasesList = document.getElementById('phrasesStayHere');
@@ -429,7 +471,7 @@ async function deletePhrase( id ) {
     prevButton.style.display = "flex"
 
     
-    let startSlide = -1;
+    let startSlide = 0;
     let countPhrasesSlide = 0;
     let isNonePhrases = false;
     
@@ -499,6 +541,7 @@ async function deletePhrase( id ) {
       nextButton.style.display = "block";
     } 
   }
+
   
   function showPrevPhrases() {
     const phrasesList = document.getElementById('phrasesStayHere');
@@ -506,7 +549,7 @@ async function deletePhrase( id ) {
     const select = document.querySelector("select");
     nextButton.style.display = "flex"
   
-    let startSlide = -1;
+    let startSlide = 0;
     let countPhrasesSlide = 0;
     let isNonePhrases = false;
   
@@ -577,31 +620,46 @@ async function deletePhrase( id ) {
     } 
   }
   
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
   
   const select = document.querySelector("select");
   
   select.addEventListener("change", () => {
     const listItems = document.querySelectorAll(".paragraph");
 
-    
+
     for (let index = 0; index < listItems.length; index++) {
       if (select.value === "pagThree" && index < 3) {
         listItems[index].style.display = "flex";
-      } 
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
+        
+      }
       else if(select.value === "pagFive" && index < 5) {
         listItems[index].style.display = "flex";
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
       } 
       else if (select.value === "pagTen" && index < 10) {
         listItems[index].style.display = "flex";
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
       } 
       else if (select.value === "pagFifteen" && index < 15) {
         listItems[index].style.display = "flex";
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
       } 
       else if (select.value === "pagTwenty" && index < 20) {
         listItems[index].style.display = "flex";
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
       } 
       else {
         listItems[index].style.display = "none";
+        prevButton.style.display = "flex";
+        nextButton.style.display = "flex";
       }
     }
   });
