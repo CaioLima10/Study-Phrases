@@ -131,7 +131,7 @@ form.addEventListener('submit', async  (event) => {
     const existingPhrases = await listPhrase();
 
     for (let i = 0; i < existingPhrases.length ;i++) {
-      if (existingPhrases[i].phrase === textarea.value) {
+      if (existingPhrases[i].phrase.toLowerCase() === textarea.value.toLowerCase()) {
 
             const Toast = Swal.mixin({
               toast: true,
@@ -202,7 +202,13 @@ const loadCounterPhrases = async () =>{
   const localCounter = localStorage.getItem("counter") || 0;
   const currentCounter = parseInt(localCounter);
 
-  countPhrases.innerHTML = existingPhrases.length;
+  const textCounter = document.createElement("span")
+  textCounter.classList.add("textCounter")
+  textCounter.innerHTML = "Quantidade de frases criadas: "
+
+  countPhrases.innerHTML = `${existingPhrases.length}`
+
+  countPhrases.appendChild(textCounter) 
 
   if (existingPhrases.length > currentCounter) {
     localStorage.setItem("counter", existingPhrases.length);
